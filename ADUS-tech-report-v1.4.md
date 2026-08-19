@@ -242,7 +242,7 @@ Human parallels are worth stating carefully, since they are usually conflated. B
 @techreport{ADUSv1_4,
   title = {{ADUS: A Functional Architecture of Intelligence (v1.4)}},
   author = {{Toby Lightheart}},
-  url = {https://github.com/symbolfarm/intelligence},
+  url = {https://github.com/tobylightheart/adus-intelligence},
   year = {2026}
 }
 ```

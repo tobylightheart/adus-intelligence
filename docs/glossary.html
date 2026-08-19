@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="ADUS v1.4 framework documents">
+  <title>ADUS v1.4 — Glossary</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#content">Skip to content</a>
+  <header class="site-header"><a class="brand" href="index.html">ADUS <span>v1.4</span></a><nav aria-label="Primary"><a href="index.html">Overview</a><a href="report.html">Technical report</a><a href="glossary.html" aria-current="page">Glossary</a></nav></header>
+  <div class="layout"><nav class="toc" aria-label="On this page"><h2>On this page</h2><ol><li class="toc-level-2"><a href="#reading-order">Reading order</a></li><li class="toc-level-2"><a href="#a">A</a></li><li class="toc-level-2"><a href="#c">C</a></li><li class="toc-level-2"><a href="#d">D</a></li><li class="toc-level-2"><a href="#e">E</a></li><li class="toc-level-2"><a href="#f">F</a></li><li class="toc-level-2"><a href="#i">I</a></li><li class="toc-level-2"><a href="#l">L</a></li><li class="toc-level-2"><a href="#m">M</a></li><li class="toc-level-2"><a href="#n">N</a></li><li class="toc-level-2"><a href="#p">P</a></li><li class="toc-level-2"><a href="#r">R</a></li><li class="toc-level-2"><a href="#s">S</a></li><li class="toc-level-2"><a href="#t">T</a></li><li class="toc-level-2"><a href="#u">U</a></li><li class="toc-level-2"><a href="#v">V</a></li><li class="toc-level-2"><a href="#z">Z</a></li><li class="toc-level-2"><a href="#gaps-terms-used-but-not-defined-in-v1-4">Gaps: terms used but not defined in v1.4</a></li></ol></nav><main id="content"><h1 id="adus-v1-4-glossary">ADUS v1.4 — Glossary<a class="permalink" href="#adus-v1-4-glossary" aria-label="Link to this section">#</a></h1>
+<p>Companion reference to <em>ADUS Framework – Technical Report (v1.4)</em>. Entries are alphabetical. Section §-references point to the technical report.</p>
+<p>Entries marked <strong>[gap]</strong> are terms the report uses without defining; a proposed definition is given, but it is a proposal, not a restatement. These are collected again in the final section.</p>
+<hr>
+<h2 id="reading-order">Reading order<a class="permalink" href="#reading-order" aria-label="Link to this section">#</a></h2>
+<p>For a first pass, the framework decomposes into five layers:</p>
+<ol>
+<li><strong>Nodes</strong> — A, D, U, S. What kinds of working part exist.</li>
+<li><strong>State parameters</strong> — Do_A, Aw, Cn, PS. What state a component is in.</li>
+<li><strong>Zones</strong> — Zone-1/2/3. Position on the load axis.</li>
+<li><strong>Dynamics</strong> — plasticity, consolidation channels, matrix edges. How components move and interact.</li>
+<li><strong>Boundary conditions</strong> — V, coverage, reachable set. What the environment and the architecture must supply.</li>
+</ol>
+<hr>
+<h2 id="a">A<a class="permalink" href="#a" aria-label="Link to this section">#</a></h2>
+<p><strong>A</strong> — see <em>Abilities</em>.</p>
+<p><strong>A-qualitative change</strong> (<a class="section-ref" href="report.html#3-1-abilities-qualitative-and-quantitative-change">§3.1</a>) — a change to A that alters <em>which</em> U and S are reachable at all. The criterion for Level 2. Paradigm case: a new sensory or motor modality.</p>
+<p><strong>A-quantitative change</strong> (<a class="section-ref" href="report.html#3-1-abilities-qualitative-and-quantitative-change">§3.1</a>) — a change to A that alters the ceiling, rate, or capacity <em>within</em> an unchanged reachable set. Width scaling, parameter growth, and context extension are A-quantitative by default.</p>
+<p><strong>A-realisation</strong> (<a class="section-ref" href="report.html#3-1-abilities-qualitative-and-quantitative-change">§3.1</a>) — the emergence under training of a capacity that the architecture already afforded. Not new A. Distinguishes "the model developed X during training" from "the model acquired the ability to develop X."</p>
+<p><strong>Abilities (A)</strong> (<a class="section-ref" href="report.html#3-component-model">§3</a>) — substrate-bounded core capacities, biological or architectural. The node that sets ceilings on what U and S can be acquired. Sub-domains: cognitive, perceptual, motor, sensory, consolidative. In artificial systems: context length, attention capacity, parameter count, inductive biases, presence of a consolidation route.</p>
+<p><strong>Ablation</strong> — removing or zeroing a model component to test whether behaviour depends on it. Used in the Aw assay (<a class="section-ref" href="report.html#8-1-proposed-aw-assay">§8.1</a>) as an implementation-level intervention measuring a functional quantity.</p>
+<p><strong>Activation patching</strong> — replacing activations at a chosen site with those from a different input, to test causal contribution. Same role as ablation in <a class="section-ref" href="report.html#8-1-proposed-aw-assay">§8.1</a>.</p>
+<p><strong>Architecturally afforded</strong> (<a class="section-ref" href="report.html#3-1-abilities-qualitative-and-quantitative-change">§3.1</a>) — the framework's stance on A: architecture bounds the reachable set; training determines which of the afforded set is realised. Contrasts with "architecturally given," under which A would be fully fixed at design time.</p>
+<p><strong>Automaticity</strong> — see <em>Do_A</em>.</p>
+<p><strong>Awareness</strong> — see <em>Aw</em>.</p>
+<p><strong>Aw( )</strong> (<a class="section-ref" href="report.html#3-4-awareness-control-parameters">§3.4</a>) — awareness parameter, or "re-conscious-isation gain," 0–1 per node. 1 = the actor can voluntarily return a Zone-1 process to conscious working memory and report its content <em>veridically</em>. 0 = opaque under explicit probing. Veridicality, not fluency, is the criterion.</p>
+<p><strong>Aw(U)</strong> — awareness of the understanding store specifically. Central to the framework's LLM diagnosis: frontier models are hypothesised to have Aw(U) ≈ 0 for provenance, so metacognition (the U-row) runs off a store the system cannot veridically inspect.</p>
+<hr>
+<h2 id="c">C<a class="permalink" href="#c" aria-label="Link to this section">#</a></h2>
+<p><strong>C-N / C-X / C-T / C-S</strong> (<a class="section-ref" href="report.html#3-3-zones-and-plasticity">§3.3</a>) — the consolidation channels, in ascending order of substrate involvement:</p>
+<div class="table-wrap"><table><thead><tr><th></th><th>Route</th></tr></thead><tbody>
+<tr><td><strong>C-N</strong></td><td>No route. Gains do not outlast the episode.</td></tr>
+<tr><td><strong>C-X</strong></td><td>External artifact. Gains persist outside the agent and are re-presented later.</td></tr>
+<tr><td><strong>C-T</strong></td><td>Substrate, other-initiated. Gains reach the weights via a training process the agent does not initiate.</td></tr>
+<tr><td><strong>C-S</strong></td><td>Substrate, self-initiated. The agent initiates the update to its own substrate.</td></tr>
+</tbody></table></div>
+<p>The ladder is a <em>substrate</em> ordering with an <em>initiation</em> qualifier on the substrate rung, not two independent axes.</p>
+<p><strong>Ceiling edge</strong> (<a class="section-ref" href="report.html#5-interaction-matrix-4-4">§5</a>) — the A→U and A→S cells of the interaction matrix. Where A constrains what U and S can be acquired. The reachability criterion (<a class="section-ref" href="report.html#3-1-abilities-qualitative-and-quantitative-change">§3.1</a>) is stated in terms of these edges.</p>
+<p><strong>Cn( )</strong> (<a class="section-ref" href="report.html#3-4-awareness-control-parameters">§3.4</a>) — control parameter, or "veto/redirect gain," 0–1 per node. 1 = complete on-line suppression or re-routing of an automatism; 0 = no detectable override. Assay: stop-signal with automatism pre-loaded, Cn = 1 − p_fail × (SSRT / median_go_RT). Deliberately <em>pure suppression</em>: amplification is modelled separately as D-driven potentiation.</p>
+<p><strong>Confabulation</strong> (<a class="section-ref" href="report.html#3-4-awareness-control-parameters">§3.4</a>) — the Aw = 0 failure mode with high verbal output. Confident, articulate self-report with no predictive relationship to the underlying process. The reason fluency cannot serve as an awareness measure.</p>
+<p><strong>Consolidation</strong> (<a class="section-ref" href="report.html#3-2-consolidation-as-an-ability">§3.2</a>, <a class="section-ref" href="report.html#3-3-zones-and-plasticity">§3.3</a>) — the process by which Zone-2/3 content becomes Zone-1 content; equivalently, movement along the load axis that persists beyond the episode.</p>
+<p><strong>Consolidation route</strong> (<a class="section-ref" href="report.html#3-2-consolidation-as-an-ability">§3.2</a>) — an available path for consolidation. Its existence, not merely its speed, determines reachability, which is why consolidation capacity is classified as A.</p>
+<p><strong>Consolidative (A sub-domain)</strong> (<a class="section-ref" href="report.html#3-2-consolidation-as-an-ability">§3.2</a>) — the ability sub-domain covering consolidation capacity. New in v1.4. Its absence in frontier LLMs is the framework's central AI diagnosis.</p>
+<p><strong>Constrained reasoning budget</strong> (<a class="section-ref" href="report.html#6-2-proposed-load-assay-for-artificial-systems">§6.2</a>) — proposed load assay for artificial systems. Vary permitted reasoning-token allocation; measure degradation. Zone-1 content survives severe constraint, Zone-3 procedures collapse. Degradation slope is the analogue of dual-task cost.</p>
+<p><strong>Coverage</strong> (<a class="section-ref" href="report.html#8-3-adjacent-concepts-environment">§8.3</a>) — environmental parameter: breadth and sequencing of available experience. Distinct from V. Curriculum is a coverage intervention, not a verification one.</p>
+<hr>
+<h2 id="d">D<a class="permalink" href="#d" aria-label="Link to this section">#</a></h2>
+<p><strong>D</strong> — see <em>Disposition</em>.</p>
+<p><strong>D-driven potentiation</strong> (<a class="section-ref" href="report.html#5-1-d-driven-potentiation">§5.1</a>) — amplification of an automatism modelled as a positive-gain D→ matrix edge rather than as negative control. Preserves the dissociation between "can suppress when engaged" (high Cn) and "strong drive when not engaged" (strong potentiation).</p>
+<p><strong>Disposition (D)</strong> (<a class="section-ref" href="report.html#3-component-model">§3</a>) — affective, motivational, and habit circuits. Sub-domains: affect-valence, drive-intensity, habit-context. Assayed as three loops (see <em>Loop A/B/C</em>).</p>
+<p><strong>Do_A( )</strong> (<a class="section-ref" href="report.html#3-component-model">§3</a>) — automaticity parameter, 0–1 per node. Higher = more automatic, lower dual-task cost, less stepwise execution. Determines zone placement but <em>not</em> node identity (<a class="section-ref" href="report.html#3-component-model">§3</a>, node-identity principle). Notation normalised in v1.4; v1.3 used DoCA / DoDA / DoPA / DoSA.</p>
+<p><strong>Dual-task cost</strong> (<a class="section-ref" href="report.html#3-3-zones-and-plasticity">§3.3</a>) — performance decrement when a component is exercised under a competing demand. The primary operationalisation of the load axis in humans.</p>
+<hr>
+<h2 id="e">E<a class="permalink" href="#e" aria-label="Link to this section">#</a></h2>
+<p><strong>EEfRT</strong> (<a class="section-ref" href="report.html#6-measurement-suite-2-h-battery">§6</a>) — Effort Expenditure for Rewards Task. Effort-discounting assay used for Loop B of D.</p>
+<p><strong>Elastic / plastic</strong> — <em>article vocabulary, not framework vocabulary.</em> Elastic adaptation reverts when the episode ends (C-N); plastic adaptation persists (C-T, C-S). Note the collision with Elastic Weight Consolidation, where "elastic" denotes a restoring force that aids retention — the opposite valence.</p>
+<p><strong>Episodic memory (as an A candidate)</strong> (<a class="section-ref" href="report.html#3-1-abilities-qualitative-and-quantitative-change">§3.1</a>) — listed as a candidate A-qualitative capacity. Note that in LLMs the context window arguably supplies the <em>store</em> functionally, and what is missing is the encoding step — making this partly a consolidation question rather than an ability question.</p>
+<p><strong>Executive function (as an A candidate)</strong> (<a class="section-ref" href="report.html#3-1-abilities-qualitative-and-quantitative-change">§3.1</a>) — listed as a candidate A-qualitative capacity. The framework's negative verdict for current LLMs runs through Aw rather than A: monitoring that is not veridical is not executive control.</p>
+<hr>
+<h2 id="f">F<a class="permalink" href="#f" aria-label="Link to this section">#</a></h2>
+<p><strong>Functional-primary</strong> (<a class="section-ref" href="report.html#2-level-of-analysis">§2</a>) — the level-of-analysis commitment in v1.4. Node identity, zone placement, and all <a class="section-ref" href="report.html#9-falsifiable-claims">§9</a> claims are stated functionally; implementation evidence is admissible as evidence and mechanism, not as definition.</p>
+<hr>
+<h2 id="i">I<a class="permalink" href="#i" aria-label="Link to this section">#</a></h2>
+<p><strong>Implementation evidence</strong> (<a class="section-ref" href="report.html#2-level-of-analysis">§2</a>) — architectural facts, ablation, patching, mechanistic interpretability. Admissible under the priority rule.</p>
+<p><strong>Insight strength (IS)</strong> (<a class="section-ref" href="report.html#4-operational-boundaries">§4</a>) — <strong>[gap]</strong> named as a quantity carried on the S→U edge, alongside PS on U→S, but not defined. <em>Proposed:</em> the strength with which procedural competence yields explicit conceptual content — the reverse of proceduralisation, i.e. articulating what one has learned to do.</p>
+<p><strong>Interaction matrix</strong> (<a class="section-ref" href="report.html#5-interaction-matrix-4-4">§5</a>) — the 4×4 directed source→target influence structure over nodes. Interventions are held to target edges rather than nodes (<a class="section-ref" href="report.html#7-human-enhancement-heuristics">§7</a>).</p>
+<p><strong>Internal simulation</strong> (<a class="section-ref" href="report.html#8-2-internal-simulation-functional-criterion-and-assay">§8.2</a>) — roll-forward of represented state that is <em>not routed through the output channel</em>. An information-flow criterion, chosen so that internality remains functional rather than implementational. Assay: constrain reasoning tokens and test whether simulation-dependent performance survives.</p>
+<hr>
+<h2 id="l">L<a class="permalink" href="#l" aria-label="Link to this section">#</a></h2>
+<p><strong>Level 1</strong> (<a class="section-ref" href="report.html#3-1-abilities-qualitative-and-quantitative-change">§3.1</a>) — acquisition of new U and S within a fixed reachable set.</p>
+<p><strong>Level 2</strong> (<a class="section-ref" href="report.html#3-1-abilities-qualitative-and-quantitative-change">§3.1</a>) — A-qualitative change: expansion of the reachable set.</p>
+<p><strong>Load axis</strong> (<a class="section-ref" href="report.html#3-3-zones-and-plasticity">§3.3</a>) — the dimension along which zones are defined in v1.4: sensitivity to competing demand and dependence on explicit stepwise execution. Separated in v1.4 from plasticity, which was previously bundled into the zone definition.</p>
+<p><strong>Loop A / Loop B / Loop C</strong> (<a class="section-ref" href="report.html#6-measurement-suite-2-h-battery">§6</a>) — <strong>[gap]</strong> the three D feedback loops, identified by assay (affective-priming RT; EEfRT effort-discounting; slip-of-action habit test) rather than by definition. <em>Proposed mapping:</em> Loop A ≈ affect-valence, Loop B ≈ drive-intensity, Loop C ≈ habit-context, matching the sub-domain list in <a class="section-ref" href="report.html#3-component-model">§3</a>.</p>
+<hr>
+<h2 id="m">M<a class="permalink" href="#m" aria-label="Link to this section">#</a></h2>
+<p><strong>Metacognition</strong> (<a class="section-ref" href="report.html#5-interaction-matrix-4-4">§5</a>) — defined structurally as the U-row of the interaction matrix: U→A, U→D, U→U, U→S. Knowledge acting on the other nodes. Its reliability is bounded by Aw(U), or substituted for externally by V.</p>
+<p><strong>Mismatch diagnosis</strong> (<a class="section-ref" href="report.html#7-human-enhancement-heuristics">§7</a>) — a diagnostic pattern across nodes rather than within one: high A + low D → under-achievement; high U + low S → knowing-without-doing.</p>
+<hr>
+<h2 id="n">N<a class="permalink" href="#n" aria-label="Link to this section">#</a></h2>
+<p><strong>Node</strong> (<a class="section-ref" href="report.html#3-component-model">§3</a>) — one of the four components: A, D, U, S.</p>
+<p><strong>Node-identity principle</strong> (<a class="section-ref" href="report.html#3-component-model">§3</a>) — a node's identity is set by <em>functional role</em> (capacity ceiling, motivational circuit, content store, procedure), never by automaticity or trainability. Frozen, non-updatable knowledge is Zone-1 U, not A. Exists to prevent A↔U and A↔S conflation.</p>
+<hr>
+<h2 id="p">P<a class="permalink" href="#p" aria-label="Link to this section">#</a></h2>
+<p><strong>Plasticity</strong> (<a class="section-ref" href="report.html#3-3-zones-and-plasticity">§3.3</a>) — the transition <em>rate</em> between zones. In v1.4 it is not part of the zone definition and it is <strong>channel-relative</strong>: a property of (component × consolidation channel). Decomposed as rate = f(A_consolidation, channel availability, Aw).</p>
+<p><strong>Predictive validity</strong> (<a class="section-ref" href="report.html#8-1-proposed-aw-assay">§8.1</a>) — the criterion in the Aw assay: does the introspective report predict behaviour under intervention. Replaces confidence and coherence as the measure.</p>
+<p><strong>Priority rule</strong> (<a class="section-ref" href="report.html#2-level-of-analysis">§2</a>) — where behavioural and implementation evidence conflict, the behavioural finding fixes the attribution and the implementation finding becomes the thing requiring explanation.</p>
+<p><strong>Process-dissociation hit-rate</strong> (<a class="section-ref" href="report.html#3-4-awareness-control-parameters">§3.4</a>) — human Aw assay. Probe-cued report of the last automatic stimulus or rule; hit-rate = Aw.</p>
+<p><strong>Proceduralisation strength (PS)</strong> (<a class="section-ref" href="report.html#3-component-model">§3</a>, <a class="section-ref" href="report.html#4-operational-boundaries">§4</a>, <a class="section-ref" href="report.html#6-measurement-suite-2-h-battery">§6</a>) — the quantity on the U→S edge measuring how far declarative content has become procedure. Assayed by retrieval latency plus dual-task cost during recall. Distinct from Do_A(U), though v1.3 presented them in the same cell.</p>
+<hr>
+<h2 id="r">R<a class="permalink" href="#r" aria-label="Link to this section">#</a></h2>
+<p><strong>Reachable set</strong> (<a class="section-ref" href="report.html#3-1-abilities-qualitative-and-quantitative-change">§3.1</a>) — the set of U and S that a given architecture permits to be acquired at all. The central construct behind Level 1/Level 2: Level 1 moves within it, Level 2 expands it.</p>
+<p><strong>Reachability criterion</strong> (<a class="section-ref" href="report.html#3-1-abilities-qualitative-and-quantitative-change">§3.1</a>) — the test for A-qualitative change: does the change alter <em>which</em> U and S are reachable, rather than the ceiling, rate, or capacity within an unchanged set.</p>
+<p><strong>Re-conscious-isation</strong> (<a class="section-ref" href="report.html#3-4-awareness-control-parameters">§3.4</a>) — the process Aw measures: returning an automatised process to conscious working memory such that its content can be veridically reported.</p>
+<p><strong>Retest gain, channel-indexed</strong> (<a class="section-ref" href="report.html#6-measurement-suite-2-h-battery">§6</a>) — retest gain is now reported together with the consolidation channel under which it was measured, since under C-N every rate is zero by construction.</p>
+<hr>
+<h2 id="s">S<a class="permalink" href="#s" aria-label="Link to this section">#</a></h2>
+<p><strong>Skills (S)</strong> (<a class="section-ref" href="report.html#3-component-model">§3</a>) — learned procedures, motor or cognitive. Sub-domains: motor, cognitive, perceptual-motor, social.</p>
+<p><strong>Slip-of-action test</strong> (<a class="section-ref" href="report.html#6-measurement-suite-2-h-battery">§6</a>) — habit assay used for Loop C of D: does a previously reinforced response persist after the contingency is devalued.</p>
+<p><strong>SSRT</strong> (<a class="section-ref" href="report.html#3-4-awareness-control-parameters">§3.4</a>, <a class="section-ref" href="report.html#6-1-awareness-control-extra-15-min">§6.1</a>) — stop-signal reaction time. Component of the Cn assay.</p>
+<hr>
+<h2 id="t">T<a class="permalink" href="#t" aria-label="Link to this section">#</a></h2>
+<p><strong>Tick</strong> (<a class="section-ref" href="report.html#4-operational-boundaries">§4</a>) — <strong>[gap]</strong> used in the Cn formulation ("for the current tick"), implying a discrete-time dynamical model that is not specified. <em>Proposed:</em> one update step of the interaction matrix; needs pinning down before the matrix can be simulated.</p>
+<hr>
+<h2 id="u">U<a class="permalink" href="#u" aria-label="Link to this section">#</a></h2>
+<p><strong>Understanding (U)</strong> (<a class="section-ref" href="report.html#3-component-model">§3</a>) — the declarative and episodic content store. Sub-domains: factual, conceptual, experiential, contextual. Note that zone placement for a <em>store</em> is about retrieval automaticity rather than execution load; see the gaps section.</p>
+<p><strong>U-row</strong> — see <em>Metacognition</em>.</p>
+<hr>
+<h2 id="v">V<a class="permalink" href="#v" aria-label="Link to this section">#</a></h2>
+<p><strong>V (verification strength)</strong> (<a class="section-ref" href="report.html#8-3-adjacent-concepts-environment">§8.3</a>) — environmental parameter: the quality of the feedback signal available in the task environment. Ordinal: formal verifier &gt; execution feedback &gt; learned judge &gt; intrinsic signal. Not an ADUS node; an adjacent condition.</p>
+<p><strong>V × Aw substitution</strong> (<a class="section-ref" href="report.html#8-3-adjacent-concepts-environment">§8.3</a>, claim 7) — the claim that V and Aw are substitutes on the U-row edges: metacognitive correction can be driven externally by verification or internally by veridical self-inspection. Predicts reliable improvement at high V even where Aw ≈ 0, and stalling at low V.</p>
+<p><strong>Veridicality</strong> (<a class="section-ref" href="report.html#3-4-awareness-control-parameters">§3.4</a>) — the correspondence between a self-report and the process it reports on. The criterion for Aw, chosen specifically to exclude fluent confabulation.</p>
+<hr>
+<h2 id="z">Z<a class="permalink" href="#z" aria-label="Link to this section">#</a></h2>
+<p><strong>Zone-1 (core / trait)</strong> (<a class="section-ref" href="report.html#3-3-zones-and-plasticity">§3.3</a>) — dual-task cost &lt; 10%; no explicit stepwise execution; resistant to single-session intervention. Provisional Do_A ≥ 0.9.</p>
+<p><strong>Zone-2 (trainable)</strong> (<a class="section-ref" href="report.html#3-3-zones-and-plasticity">§3.3</a>) — measurable dual-task cost; partial stepwise dependence. Provisional Do_A 0.3–0.9.</p>
+<p><strong>Zone-3 (conscious / state)</strong> (<a class="section-ref" href="report.html#3-3-zones-and-plasticity">§3.3</a>) — performance collapses under load; requires explicit step-by-step execution. Provisional Do_A &lt; 0.3.</p>
+<p><strong>Zone placement</strong> (<a class="section-ref" href="report.html#3-component-model">§3</a>) — the current <em>state</em> of a component within a node. Distinct from node identity, which is fixed by functional role.</p>
+<hr>
+<h2 id="gaps-terms-used-but-not-defined-in-v1-4">Gaps: terms used but not defined in v1.4<a class="permalink" href="#gaps-terms-used-but-not-defined-in-v1-4" aria-label="Link to this section">#</a></h2>
+<p>Collected for a v1.5 pass. Proposed definitions above are proposals only.</p>
+<ol>
+<li><strong>Insight strength (IS)</strong> — named in <a class="section-ref" href="report.html#4-operational-boundaries">§4</a>, never defined.</li>
+<li><strong>Loop A / B / C</strong> — identified by assay, not by construct. The mapping to D's sub-domains is inferable but unstated.</li>
+<li><strong>Tick</strong> — implies a discrete-time dynamical model that the report does not specify. Blocking for any simulation of the matrix.</li>
+<li><strong>Zone semantics for a content store.</strong> The load axis is defined by dual-task cost and stepwise execution, which are properties of <em>processes</em>. U is a <em>store</em>. In practice <a class="section-ref" href="report.html#6-measurement-suite-2-h-battery">§6</a> measures U through retrieval (latency + dual-task cost during recall), so U's zone is retrieval automaticity — but this is never said, and as written the zone criteria do not straightforwardly apply to U at all. Worth an explicit sentence in <a class="section-ref" href="report.html#3-3-zones-and-plasticity">§3.3</a>.</li>
+<li><strong>PS vs Do_A(U)</strong> — v1.3 listed them in the same table cell; v1.4 asserts they are distinct without stating the relationship. Are they independent, or is PS a directional component of Do_A(U)?</li>
+<li><strong>"Developmental windows"</strong> (<a class="section-ref" href="report.html#4-operational-boundaries">§4</a>) — invoked as a mechanism locking A into Zone-1; not defined, and its artificial-system analogue is unstated.</li>
+<li><strong>Sub-domain boundaries within U</strong> — "experiential" and "contextual" are not distinguished from each other or from "factual."</li>
+<li><strong>Channel availability</strong> — appears in the plasticity decomposition (<a class="section-ref" href="report.html#3-2-consolidation-as-an-ability">§3.2</a>) as a term in f( ), but is not itself given a scale. Binary, or graded by bandwidth and latency?</li>
+</ol></main></div>
+  <footer><p>Independent research · <a href="https://github.com/symbolfarm/retention-bench">Retention Bench</a> measures the consolidation claims.</p></footer>
+</body>
+</html>

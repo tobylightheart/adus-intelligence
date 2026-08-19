@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="ADUS v1.4 framework documents">
+  <title>ADUS Framework — Technical Report v1.4</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#content">Skip to content</a>
+  <header class="site-header"><a class="brand" href="index.html">ADUS <span>v1.4</span></a><nav aria-label="Primary"><a href="index.html">Overview</a><a href="report.html" aria-current="page">Technical report</a><a href="glossary.html">Glossary</a></nav></header>
+  <div class="layout"><nav class="toc" aria-label="On this page"><h2>On this page</h2><ol><li class="toc-level-2"><a href="#0-changelog-from-v1-3">0. Changelog from v1.3</a></li><li class="toc-level-2"><a href="#1-purpose">1. Purpose</a></li><li class="toc-level-2"><a href="#2-level-of-analysis">2. Level of Analysis</a></li><li class="toc-level-2"><a href="#3-component-model">3. Component Model</a></li><li class="toc-level-3"><a href="#3-1-abilities-qualitative-and-quantitative-change">3.1 Abilities: qualitative and quantitative change</a></li><li class="toc-level-3"><a href="#3-2-consolidation-as-an-ability">3.2 Consolidation as an ability</a></li><li class="toc-level-3"><a href="#3-3-zones-and-plasticity">3.3 Zones and plasticity</a></li><li class="toc-level-3"><a href="#3-4-awareness-control-parameters">3.4 Awareness &amp; Control Parameters</a></li><li class="toc-level-2"><a href="#4-operational-boundaries">4. Operational Boundaries</a></li><li class="toc-level-2"><a href="#5-interaction-matrix-4-4">5. Interaction Matrix (4×4)</a></li><li class="toc-level-3"><a href="#5-1-d-driven-potentiation">5.1 D-driven potentiation</a></li><li class="toc-level-2"><a href="#6-measurement-suite-2-h-battery">6. Measurement Suite (2 h battery)</a></li><li class="toc-level-3"><a href="#6-1-awareness-control-extra-15-min">6.1 Awareness &amp; Control (extra 15 min)</a></li><li class="toc-level-3"><a href="#6-2-proposed-load-assay-for-artificial-systems">6.2 Proposed load assay for artificial systems</a></li><li class="toc-level-2"><a href="#7-human-enhancement-heuristics">7. Human Enhancement Heuristics</a></li><li class="toc-level-2"><a href="#8-ai-llm-mapping">8. AI / LLM Mapping</a></li><li class="toc-level-3"><a href="#8-1-proposed-aw-assay">8.1 Proposed Aw assay</a></li><li class="toc-level-3"><a href="#8-2-internal-simulation-functional-criterion-and-assay">8.2 Internal simulation: functional criterion and assay</a></li><li class="toc-level-3"><a href="#8-3-adjacent-concepts-environment">8.3 Adjacent concepts: environment</a></li><li class="toc-level-2"><a href="#9-falsifiable-claims">9. Falsifiable Claims</a></li><li class="toc-level-2"><a href="#10-file-formats-links">10. File Formats &amp; Links</a></li><li class="toc-level-2"><a href="#11-citation">11. Citation</a></li></ol></nav><main id="content"><h1 id="adus-framework-technical-report-v1-4">ADUS Framework – Technical Report (v1.4)<a class="permalink" href="#adus-framework-technical-report-v1-4" aria-label="Link to this section">#</a></h1>
+<h2 id="0-changelog-from-v1-3">0. Changelog from v1.3<a class="permalink" href="#0-changelog-from-v1-3" aria-label="Link to this section">#</a></h2>
+<ul>
+<li><strong><a class="section-ref" href="#2-level-of-analysis">§2</a> level of analysis restated</strong>: functional-primary with implementation evidence admissible, plus an explicit priority rule. Resolves a latent inconsistency between v1.3 <a class="section-ref" href="#2-level-of-analysis">§2</a> (functional only) and v1.3 <a class="section-ref" href="#8-ai-llm-mapping">§8</a> (architectural definition of A).</li>
+<li><strong><a class="section-ref" href="#3-component-model">§3</a> A split into qualitative and quantitative change</strong>, with a reachability criterion. Level 2 redefined as A-qualitative change. Capacity scaling is A-quantitative.</li>
+<li><strong><a class="section-ref" href="#3-component-model">§3</a> consolidation added as an A sub-domain.</strong> Consolidation capacity governs the zone-transition rate and is therefore an ability, not a rate parameter.</li>
+<li><strong><a class="section-ref" href="#3-1-abilities-qualitative-and-quantitative-change">§3.1</a> zones redefined on the load axis alone.</strong> Plasticity removed from the zone definition and reintroduced as a channel-relative transition <em>rate</em>. Consolidation channels (C-N / C-X / C-T / C-S) introduced.</li>
+<li><strong><a class="section-ref" href="#6-measurement-suite-2-h-battery">§6</a> retest criterion now channel-indexed.</strong> New proposed LLM load assay (constrained reasoning budget).</li>
+<li><strong><a class="section-ref" href="#8-ai-llm-mapping">§8</a> revised</strong>: A row corrected, consolidation deficit stated as an A deficit, internal simulation given a functional criterion and assay, and environment parameters (V, coverage) added as adjacent concepts.</li>
+<li><strong><a class="section-ref" href="#9-falsifiable-claims">§9</a> claim 4 reformulated</strong> as a C-X vs C-T slope comparison. New claims 7–9.</li>
+<li><strong>Editorial</strong>: automaticity notation normalised to Do_A(X). See <a class="section-ref" href="#3-component-model">§3</a> note.</li>
+</ul>
+<hr>
+<h2 id="1-purpose">1. Purpose<a class="permalink" href="#1-purpose" aria-label="Link to this section">#</a></h2>
+<p>Mechanistic, functional architecture of intelligence that bridges psychometric structures and actionable intervention for humans and artificial systems.</p>
+<hr>
+<h2 id="2-level-of-analysis">2. Level of Analysis<a class="permalink" href="#2-level-of-analysis" aria-label="Link to this section">#</a></h2>
+<p>ADUS is a <strong>functional architecture with implementation evidence admissible</strong>. Two commitments, in priority order.</p>
+<p><strong>Primary — functional.</strong> Node identity, zone placement, and every claim in <a class="section-ref" href="#9-falsifiable-claims">§9</a> are stated in terms of functional role and information flow, never in terms of substrate. This is what makes the same vocabulary applicable to biological and artificial systems, and what makes the node-identity principle (<a class="section-ref" href="#3-component-model">§3</a>) enforceable.</p>
+<p><strong>Secondary — implementation admissible as evidence.</strong> Architectural facts, ablation, activation patching, and mechanistic interpretability results are admissible as evidence for a functional attribution, and as mechanism where mechanism is known. They are not admissible as definitions.</p>
+<p><strong>Priority rule.</strong> Where behavioural and implementation evidence conflict, the behavioural finding fixes the attribution and the implementation finding becomes an explanandum. A component that behaves as Zone-2 is Zone-2 even if the circuit implementing it is believed to be fixed; the belief is then what requires revision.</p>
+<p><em>Rationale.</em> v1.3 <a class="section-ref" href="#2-level-of-analysis">§2</a> asserted functional analysis "without committing to neural or algorithmic implementation," while v1.3 <a class="section-ref" href="#8-ai-llm-mapping">§8</a> defined A for artificial systems as context length, attention capacity, and parameter count — an implementation-level definition. The inconsistency was doing real work, because some attributions (internal simulation, <a class="section-ref" href="#8-ai-llm-mapping">§8</a>) cannot be adjudicated behaviourally alone. The resolution above admits that evidence without letting it override the functional criteria, which would otherwise reopen the A↔U and A↔S conflations that <a class="section-ref" href="#3-component-model">§3</a> exists to close.</p>
+<p>The template already present in v1.3 is the proposed Aw assay: an implementation-level intervention (ablation, patching) used to measure a functionally defined quantity (predictive validity of introspective report). That is the intended pattern throughout.</p>
+<hr>
+<h2 id="3-component-model">3. Component Model<a class="permalink" href="#3-component-model" aria-label="Link to this section">#</a></h2>
+<p>Four continuously interacting nodes. Each carries an <strong>automaticity parameter</strong> Do_A( ), an <strong>awareness parameter</strong> Aw( ), and a <strong>controllability parameter</strong> Cn( ), each ranging 0–1.</p>
+<div class="table-wrap"><table><thead><tr><th>Node</th><th>Symbol</th><th>Definition</th><th>Sub-domains</th></tr></thead><tbody>
+<tr><td><strong>Abilities</strong></td><td>A</td><td>Substrate-bounded core capacities (biological or architectural)</td><td>cognitive, perceptual, motor, sensory, <strong>consolidative</strong></td></tr>
+<tr><td><strong>Disposition</strong></td><td>D</td><td>Affective, motivational &amp; habit circuits</td><td>affect-valence, drive-intensity, habit-context</td></tr>
+<tr><td><strong>Understanding</strong></td><td>U</td><td>Declarative &amp; episodic store</td><td>factual, conceptual, experiential, contextual</td></tr>
+<tr><td><strong>Skills</strong></td><td>S</td><td>Learned procedures (motor/cognitive)</td><td>motor, cognitive, perceptual-motor, social</td></tr>
+</tbody></table></div>
+<p><em>Notation note (editorial).</em> v1.3 used inconsistent subscripts — DoCA (A), DoDA (D), DoPA (U), DoSA (S). This report uses Do_A(A), Do_A(D), Do_A(U), Do_A(S) throughout. PS (proceduralisation strength) remains a distinct U→S quantity and is not an automaticity parameter. If the original letters encoded a distinction not recovered here, revert.</p>
+<p><strong>Node identity vs zone placement (principle, unchanged).</strong> A node's identity is determined by its <em>functional role</em> — capacity ceiling, motivational circuit, content store, procedure — never by its automaticity or trainability. Zone placement describes the current <em>state</em> of a component within a node. A fully automatised, non-updatable piece of knowledge is Zone-1 U, not A. This principle prevents the A↔U and A↔S conflations that the Do_A machinery exists to disambiguate, and it survives the <a class="section-ref" href="#2-level-of-analysis">§2</a> revision intact: implementation evidence may inform where a component sits, but role determines which node it is in.</p>
+<h3 id="3-1-abilities-qualitative-and-quantitative-change">3.1 Abilities: qualitative and quantitative change<a class="permalink" href="#3-1-abilities-qualitative-and-quantitative-change" aria-label="Link to this section">#</a></h3>
+<p>A is <strong>architecturally afforded, not architecturally given.</strong> Architecture bounds the set of U and S that are reachable at all; training determines which of the afforded set is realised. A capacity that emerges under gradient descent in a fixed architecture is <em>A-realisation</em>, not new A.</p>
+<p>Two kinds of change to A, distinguished by the ceiling edges A→U and A→S:</p>
+<ul>
+<li><strong>A-qualitative</strong>: the change alters <em>which</em> U and S are reachable at all. New sensory or motor modalities are the paradigm case. Candidate cognitive cases: episodic memory, internal simulation, executive function, consolidation.</li>
+<li><strong>A-quantitative</strong>: the change alters the ceiling, rate, or capacity <em>within</em> an unchanged reachable set. Width or depth scaling, context extension, and parameter growth are A-quantitative by default.</li>
+</ul>
+<p><strong>Level 1 / Level 2 restated.</strong> Level 1 is the acquisition of new U and S within a fixed reachable set. Level 2 is A-qualitative change. Constructive growth (e.g. Net2Net widening) is Level 1 machinery unless it can be shown to cross a reachability boundary — which is an empirical question, not a definitional one.</p>
+<p>This keeps "Level 2 requires architectural change" from being merely analytic. The substantive and open claim is: <strong>the reachable set under a fixed transformer trained by gradient descent is a proper subset of the reachable set under architectures with dedicated episodic, simulative, executive, or consolidative structure.</strong> If that is false, Level 2 is unnecessary for those capacities.</p>
+<h3 id="3-2-consolidation-as-an-ability">3.2 Consolidation as an ability<a class="permalink" href="#3-2-consolidation-as-an-ability" aria-label="Link to this section">#</a></h3>
+<p>Consolidation capacity — the existence and quality of a route by which Zone-2/3 content becomes Zone-1 content — is an A sub-domain, not a free rate parameter.</p>
+<p><em>Justification.</em> By the criterion in <a class="section-ref" href="#3-1-abilities-qualitative-and-quantitative-change">§3.1</a>, a component belongs to A when it determines which U and S are reachable at all. Absent a consolidation route, any competence requiring more acquisition effort than fits within a single working episode is unreachable at any level of effort. That is a reachability bound, not a rate bound. Human expertise routinely sits past it.</p>
+<p><em>Consequence for <a class="section-ref" href="#8-ai-llm-mapping">§8</a>.</em> The frontier-LLM deficit is therefore an A deficit — a Level 2 gap — rather than a shortfall of U or S. The missing thing is not knowledge or procedure but the ability that would let knowledge and procedure accumulate.</p>
+<p><em>Non-circularity.</em> <a class="section-ref" href="#3-3-zones-and-plasticity">§3.3</a> makes plasticity a channel-relative rate; this section makes that rate ability-governed. These are consistent, not circular, under the decomposition:</p>
+<blockquote>rate(X, channel) = f( A_consolidation , channel availability , Aw(X) )</blockquote>
+<p>A supplies the capacity, the channel supplies the route, and awareness supplies the direction. Self-initiated consolidation (C-S) without veridical self-inspection is undirected: the system cannot tell what is worth keeping.</p>
+<h3 id="3-3-zones-and-plasticity">3.3 Zones and plasticity<a class="permalink" href="#3-3-zones-and-plasticity" aria-label="Link to this section">#</a></h3>
+<p><strong>Zone is position on the load axis only.</strong></p>
+<div class="table-wrap"><table><thead><tr><th>Zone</th><th>Behavioural definition</th><th>Provisional Do_A range</th></tr></thead><tbody>
+<tr><td><strong>Zone-1 (core / trait)</strong></td><td>Dual-task cost &lt; 10%; no explicit stepwise execution required; resistant to single-session intervention</td><td>≥ 0.9 (to be fitted)</td></tr>
+<tr><td><strong>Zone-2 (trainable)</strong></td><td>Measurable dual-task cost; partial stepwise dependence</td><td>0.3–0.9 (to be fitted)</td></tr>
+<tr><td><strong>Zone-3 (conscious / state)</strong></td><td>Performance collapses under load; requires explicit step-by-step execution</td><td>&lt; 0.3 (to be fitted)</td></tr>
+</tbody></table></div>
+<p><strong>Plasticity is not part of the zone definition.</strong> It is the <em>transition rate</em> between zones, and it is <strong>channel-relative</strong>: a property of (component × consolidation channel), not of the component alone.</p>
+<div class="table-wrap"><table><thead><tr><th>Channel</th><th>Route</th></tr></thead><tbody>
+<tr><td><strong>C-N</strong></td><td>No route. Gains do not outlast the episode.</td></tr>
+<tr><td><strong>C-X</strong></td><td>External artifact. Gains persist in a store outside the agent and are re-presented on later episodes.</td></tr>
+<tr><td><strong>C-T</strong></td><td>Substrate, other-initiated. Gains reach the weights via a training process the agent does not initiate.</td></tr>
+<tr><td><strong>C-S</strong></td><td>Substrate, self-initiated. The agent initiates the update to its own substrate.</td></tr>
+</tbody></table></div>
+<p>Retest gain is therefore measured <strong>under a specified channel</strong>. The v1.3 criterion (30-day retest gain &lt; 5%) tacitly assumed human C-T, which is why it degenerates on frozen artificial systems: under C-N every rate is zero by construction, placing the entire system in Zone-1 including components that collapse under load. Separating the axes makes that degeneracy a finding rather than a measurement failure.</p>
+<p>Note that the channels differ in how much of the consolidation machinery sits inside the agent. C-T requires nothing of the agent. C-X requires an S (externalisation practice) plus an environmental affordance. C-S requires the A of <a class="section-ref" href="#3-2-consolidation-as-an-ability">§3.2</a>. This is why the taxonomy is a substrate ladder with an initiation qualifier on the substrate rung, rather than two independent axes.</p>
+<h3 id="3-4-awareness-control-parameters">3.4 Awareness &amp; Control Parameters<a class="permalink" href="#3-4-awareness-control-parameters" aria-label="Link to this section">#</a></h3>
+<p><strong>Awareness Aw( )</strong> — "re-conscious-isation" gain, graded 0–1. 1 = the actor can voluntarily bring a high-automaticity (Zone-1) process back into conscious working memory and <strong>veridically</strong> report its content; 0 = the process remains opaque even when explicitly probed. Veridicality is the criterion, not fluency: confident, articulate self-report with no predictive relationship to the underlying process scores Aw ≈ 0. Confabulation is the Aw = 0 failure mode with high verbal output. Human assay: process-dissociation hit-rate (probe-cued report of last automatic stimulus or rule). Binary shortcut: correct vs incorrect probe report.</p>
+<p><strong>Control Cn( )</strong> — "veto / redirect" gain, graded 0–1. 1 = complete on-line suppression or re-routing of the automatism; 0 = no detectable override. Human assay: stop-signal or Go/No-Go with automatism pre-loaded; Cn = 1 − (failure rate) × (normalised latency cost). <em>Amplification</em> of an automatism is not a control phenomenon; it is D-driven potentiation, modelled as a D→ matrix edge (<a class="section-ref" href="#5-1-d-driven-potentiation">§5.1</a>). This keeps Cn a pure executive-suppression parameter.</p>
+<p>Both parameters are hypothesised to be trainable yet trait-like stable; stability is a registered prediction (<a class="section-ref" href="#9-falsifiable-claims">§9</a>, claim 6). They modify, not replace, the underlying Do_A value.</p>
+<hr>
+<h2 id="4-operational-boundaries">4. Operational Boundaries<a class="permalink" href="#4-operational-boundaries" aria-label="Link to this section">#</a></h2>
+<ul>
+<li><strong>A ↔ S</strong>: Do_A(A) vs Do_A(S) determine node placement; developmental windows can lock A into Zone-1.</li>
+<li><strong>A-qual ↔ A-quant</strong>: reachability of the U/S set, not magnitude of the ceiling (<a class="section-ref" href="#3-1-abilities-qualitative-and-quantitative-change">§3.1</a>).</li>
+<li><strong>U ↔ S</strong>: PS quantifies proceduralisation; bidirectional edges carry PS and IS (insight strength).</li>
+<li><strong>D loops</strong>: three independent feedback loops, each with its own Do_A(D).</li>
+</ul>
+<p>Aw( ) opens a transient →U edge with weight = Aw × Do_A. Cn( ) applies a multiplicative suppressive gain (1 − Cn) to the outgoing activation of the node for the current tick. Accordingly, high-Do_A automatisms with low Aw remain opaque to conscious update, whereas high-Cn nodes can be down-regulated on demand. Up-regulation is a D-edge phenomenon, not a Cn phenomenon.</p>
+<hr>
+<h2 id="5-interaction-matrix-4-4">5. Interaction Matrix (4×4)<a class="permalink" href="#5-interaction-matrix-4-4" aria-label="Link to this section">#</a></h2>
+<p>Directed cell = <strong>source → target</strong> influence; strength = fitted coefficient or experimental effect size. Key high-impact paths:</p>
+<ul>
+<li>D→U (curiosity drives knowledge)</li>
+<li>U→S (concepts guide practice)</li>
+<li>S→D (competence boosts motivation)</li>
+<li>A→U &amp; A→S (ceiling edges; the criterion for A-qualitative change, <a class="section-ref" href="#3-1-abilities-qualitative-and-quantitative-change">§3.1</a>)</li>
+</ul>
+<p><strong>Diagonal self-loops</strong> (meta-): A→A, D→D, S→S</p>
+<p><strong>Metacognition</strong> (defined as U-row): U→A, U→D, U→U, U→S</p>
+<h3 id="5-1-d-driven-potentiation">5.1 D-driven potentiation<a class="permalink" href="#5-1-d-driven-potentiation" aria-label="Link to this section">#</a></h3>
+<p>Amplification of an automatism (craving-driven habit strengthening, arousal-driven perceptual capture) is modelled as a positive-gain D→ edge with its own fitted coefficient. This is mechanistically distinct from failed veto (low Cn): an actor can simultaneously have high Cn (successful suppression when engaged) and strong D→ potentiation (strong drive when suppression is not engaged). Collapsing these into one signed parameter loses that dissociation.</p>
+<hr>
+<h2 id="6-measurement-suite-2-h-battery">6. Measurement Suite (2 h battery)<a class="permalink" href="#6-measurement-suite-2-h-battery" aria-label="Link to this section">#</a></h2>
+<ul>
+<li><strong>Do_A(A) / Do_A(S)</strong>: dual-task cost. <em>Retest is channel-indexed</em>: report the channel under which retest gain was measured (<a class="section-ref" href="#3-3-zones-and-plasticity">§3.3</a>). Human default is C-T.</li>
+<li><strong>Do_A(D)</strong>: Loop A affective-priming RT; Loop B EEfRT effort-discounting; Loop C slip-of-action habit test.</li>
+<li><strong>PS</strong>: retrieval latency + dual-task cost during recall.</li>
+</ul>
+<p>All metrics open-source scripted (Python / jsPsych).</p>
+<h3 id="6-1-awareness-control-extra-15-min">6.1 Awareness &amp; Control (extra 15 min)<a class="permalink" href="#6-1-awareness-control-extra-15-min" aria-label="Link to this section">#</a></h3>
+<p>Aw — 24 probe-cued trials interpolated during automatic task; hit-rate = Aw. Cn — 48 stop-signal trials; Cn = 1 − p_fail × (SSRT / median_go_RT). Binary versions may be used for field deployment.</p>
+<h3 id="6-2-proposed-load-assay-for-artificial-systems">6.2 Proposed load assay for artificial systems<a class="permalink" href="#6-2-proposed-load-assay-for-artificial-systems" aria-label="Link to this section">#</a></h3>
+<p>The load axis needs an artificial analogue or the <a class="section-ref" href="#8-ai-llm-mapping">§8</a> placements are assigned by intuition rather than measured. Proposed: <strong>constrained reasoning budget.</strong> Vary the permitted reasoning-token allocation and measure performance degradation. Zone-1 content survives a severely constrained budget; Zone-3 procedures collapse. The degradation slope is the analogue of dual-task cost. Cheap to run and it makes the <a class="section-ref" href="#8-ai-llm-mapping">§8</a> table empirical.</p>
+<hr>
+<h2 id="7-human-enhancement-heuristics">7. Human Enhancement Heuristics<a class="permalink" href="#7-human-enhancement-heuristics" aria-label="Link to this section">#</a></h2>
+<ul>
+<li><strong>Zone-3 → 2</strong>: deliberate practice + fluency pressure</li>
+<li><strong>Zone-2 → 1</strong>: spaced over-learning; critical-period sensitive for A</li>
+<li><strong>Mismatch diagnosis</strong>: high A + low D → under-achievement; high U + low S → knowing-without-doing</li>
+</ul>
+<p>Interventions target <strong>matrix edges</strong>, not nodes, for multiplicative gain. Under <a class="section-ref" href="#3-3-zones-and-plasticity">§3.3</a> these are explicitly <em>rate</em> interventions: they raise the transition rate under an available channel, moving position on the load axis.</p>
+<hr>
+<h2 id="8-ai-llm-mapping">8. AI / LLM Mapping<a class="permalink" href="#8-ai-llm-mapping" aria-label="Link to this section">#</a></h2>
+<p><strong>A for artificial systems</strong> = architectural capacities: context length, attention capacity, parameter count, inductive biases, and the presence or absence of a consolidation route. These bound the reachable set of U and S. Learned content, however frozen, is not A. Per <a class="section-ref" href="#3-1-abilities-qualitative-and-quantitative-change">§3.1</a>, scaling these quantities is A-quantitative; adding structure that expands the reachable set is A-qualitative.</p>
+<div class="table-wrap"><table><thead><tr><th>Model capability</th><th>ADUS placement</th><th>Zone</th><th>Limitation</th></tr></thead><tbody>
+<tr><td>frozen parametric knowledge</td><td>U</td><td>1</td><td>proceduralised content store; no re-conscious-isation pathway (Aw(U) ≈ 0 for provenance); no update mechanism</td></tr>
+<tr><td>within-session recall (context)</td><td>U</td><td>2–3</td><td>veridical but volatile; no cross-session PS update</td></tr>
+<tr><td>in-context chain-of-thought</td><td>S</td><td>3</td><td>high Do_A(S) cost; no persistent delta</td></tr>
+<tr><td>emergent helpfulness</td><td>D</td><td>1–2</td><td>see note below</td></tr>
+<tr><td>context length / attention capacity</td><td>A (quantitative)</td><td>1</td><td>architectural ceiling; not trainable in deployment</td></tr>
+<tr><td>consolidation route</td><td>A (qualitative)</td><td>—</td><td><strong>absent</strong>; see below</td></tr>
+</tbody></table></div>
+<p><em>Note on the D row.</em> v1.3 placed emergent dispositions at Zone-2 on the grounds that they are context-contingent. Evidence that a disposition survives removal of the context that supposedly elicits it — e.g. fabrication behaviour persisting after completion pressure is withdrawn — is Zone-1 evidence. The row is marked 1–2 pending a load-axis measurement (<a class="section-ref" href="#6-2-proposed-load-assay-for-artificial-systems">§6.2</a>).</p>
+<p><strong>Central diagnosis (revised).</strong> v1.3 stated this as the absence of a Zone-2→1 route for U and S. Under <a class="section-ref" href="#3-2-consolidation-as-an-ability">§3.2</a> that is more precisely an <strong>ability deficit</strong>: the system lacks the consolidative A that would make the route exist. The continual learning problem is, in ADUS terms, a Level 2 gap — which is what constructive and consolidation mechanisms (cf. Retention Bench) target.</p>
+<h3 id="8-1-proposed-aw-assay">8.1 Proposed Aw assay<a class="permalink" href="#8-1-proposed-aw-assay" aria-label="Link to this section">#</a></h3>
+<p>Fluent self-report does not measure Aw (<a class="section-ref" href="#3-4-awareness-control-parameters">§3.4</a>). Instead: elicit the model's introspective report of <em>which</em> heuristic, rule, or feature drove an output, then test whether that report predicts behavioural signatures under intervention (ablation, prompt perturbation, activation patching). Aw = predictive validity of introspective report, not its confidence or coherence. Current interpretability results suggest Aw(U) for frontier models is low and unreliable; the assay makes this a measurable quantity rather than an impression.</p>
+<h3 id="8-2-internal-simulation-functional-criterion-and-assay">8.2 Internal simulation: functional criterion and assay<a class="permalink" href="#8-2-internal-simulation-functional-criterion-and-assay" aria-label="Link to this section">#</a></h3>
+<p>Simulation is <strong>internal</strong> iff the roll-forward of represented state is <em>not routed through the output channel</em>. This is an information-flow criterion, not an implementation criterion, and therefore consistent with <a class="section-ref" href="#2-level-of-analysis">§2</a>.</p>
+<p><em>Assay.</em> Constrain or suppress reasoning tokens and measure whether simulation-dependent performance survives. Survival indicates internal simulation; collapse indicates externalised roll-forward. This makes the chain-of-thought verdict empirical rather than stipulated, and it shares apparatus with <a class="section-ref" href="#6-2-proposed-load-assay-for-artificial-systems">§6.2</a>.</p>
+<p><em>Evidence status.</em> Mechanistic interpretability supports <em>representation</em> of non-linguistic structure (spatial and temporal encodings robust to prompting variation; colour, cardinal direction, object properties). Evidence for <em>simulation proper</em> — counterfactual roll-forward of a represented state — is thinner and contested. One structural objection is directly relevant: transformers recompute representations each forward pass with no latent-state persistence beyond context. If internal simulation requires persistent latent state, then the objection to internal simulation and the consolidation deficit of <a class="section-ref" href="#3-2-consolidation-as-an-ability">§3.2</a> are the same deficit at different timescales. ADUS predicts that link.</p>
+<h3 id="8-3-adjacent-concepts-environment">8.3 Adjacent concepts: environment<a class="permalink" href="#8-3-adjacent-concepts-environment" aria-label="Link to this section">#</a></h3>
+<p>ADUS models the agent. Improvement additionally requires conditions the framework does not contain, and which should not be smuggled into the node model. Following Schaul's conditions for improvement in a closed system — informative and aligned feedback, sufficient experience coverage, sufficient capacity — ADUS supplies the third (capacity is A) and the first two are environmental:</p>
+<ul>
+<li><strong>V — verification strength</strong> of the task environment, ordinal: formal verifier &gt; execution feedback &gt; learned judge &gt; intrinsic signal.</li>
+<li><strong>Coverage</strong> — breadth and sequencing of available experience. Curriculum is a coverage intervention, not a verification one.</li>
+</ul>
+<p><em>Substitution claim.</em> V and Aw are substitutes on the U-row metacognition edges: those edges can be driven externally by V or internally by Aw. A system with a proof checker does not need self-knowledge; a system in a non-verifiable domain is thrown back on it. Hence a model with Aw(U) ≈ 0 should improve reliably where V is high and stall where V is low. This is registered as claim 7.</p>
+<p>Human parallels are worth stating carefully, since they are usually conflated. Books and phones are external stores — C-X, a consolidation channel. Schools supply <em>both</em> V (marking, correction, examination) and coverage (curriculum sequencing), and these are separable interventions with separable failure modes.</p>
+<p><strong>Open problems.</strong> Continual PS update; Do_A(D) stability across contexts; Zone-1 disposition circuits; whether the reachable set under a fixed transformer is a proper subset (<a class="section-ref" href="#3-1-abilities-qualitative-and-quantitative-change">§3.1</a>).</p>
+<hr>
+<h2 id="9-falsifiable-claims">9. Falsifiable Claims<a class="permalink" href="#9-falsifiable-claims" aria-label="Link to this section">#</a></h2>
+<ol>
+<li>Do_A(D) Loop-B baseline predicts 8-week knowledge gain (U) controlling for A (β &gt; 0.3).</li>
+<li>PS mediates U→S transfer (≥ 50% of effect).</li>
+<li>Habit-loop Do_A(D) Loop-C moderates the D→U slope (interaction p &lt; 0.01).</li>
+<li><strong>(Revised.)</strong> Under matched task streams, C-X and C-T both produce positive downstream skill gain, but <strong>per-session gain under C-X is flat or decaying while under C-T it is flat or increasing.</strong> Prediction: slope divergence over ≥ 10 sessions. <em>Rationale: under C-X the retrieval mechanism does not itself improve from the gains it stores, so nothing makes the next gain easier. This tests the recursion claim rather than the existence claim, which v1.3's formulation could not discriminate.</em></li>
+<li>Dual-task cost &lt; 10% AND PS &gt; 0.7 ⇒ behaviour indistinguishable from Zone-1 core.</li>
+<li>Aw and Cn show trait-like retest stability (r &gt; 0.7 over 6 months) while remaining responsive to targeted training (≥ 0.3 SD gain from an 8-week mindfulness or inhibition protocol). <em>(To be anchored against published stop-signal / SSRT reliability estimates.)</em></li>
+<li><strong>V × Aw substitution.</strong> Systems with Aw(U) ≈ 0 show reliable self-improvement where V is high (formal verifier, execution feedback) and negligible improvement where V is low (learned judge, intrinsic signal). The effect of raising Aw is larger at low V than at high V (negative interaction term).</li>
+<li><strong>Internal simulation.</strong> Under the <a class="section-ref" href="#8-2-internal-simulation-functional-criterion-and-assay">§8.2</a> assay, simulation-dependent performance in current frontier models collapses when the output channel is constrained — i.e. roll-forward is externalised, not internal.</li>
+<li><strong>Consolidation as reachability (Level 2 test).</strong> There exist tasks unreachable under C-N <em>at any context budget</em> that become reachable under C-T. This discriminates consolidation-as-ability (<a class="section-ref" href="#3-2-consolidation-as-an-ability">§3.2</a>) from consolidation-as-rate: the rate reading predicts only slower acquisition, the ability reading predicts a reachability boundary. Directly testable on a continual-learning benchmark with parametric hard-resets.</li>
+</ol>
+<hr>
+<h2 id="10-file-formats-links">10. File Formats &amp; Links<a class="permalink" href="#10-file-formats-links" aria-label="Link to this section">#</a></h2>
+<p><strong>Yet to be implemented</strong></p>
+<ul>
+<li>Diagnostic battery: github.com/symbolfarm/intelligence-ADUS</li>
+<li>Dataset schema: ADUS_schema_v1.4.json</li>
+<li>Pre-registration templates: osf.io/adus</li>
+</ul>
+<hr>
+<h2 id="11-citation">11. Citation<a class="permalink" href="#11-citation" aria-label="Link to this section">#</a></h2>
+<pre><code>@techreport{ADUSv1_4,
+  title = {{ADUS: A Functional Architecture of Intelligence (v1.4)}},
+  author = {{Toby Lightheart}},
+  url = {https://github.com/tobylightheart/adus-intelligence},
+  year = {2026}
+}</code></pre>
+<p><strong>End of report</strong> — context set for downstream modelling, intervention design, and comparative alignment studies.</p></main></div>
+  <footer><p>Independent research · <a href="https://github.com/symbolfarm/retention-bench">Retention Bench</a> measures the consolidation claims.</p></footer>
+</body>
+</html>

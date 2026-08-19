@@ -18,6 +18,26 @@ This repository is the home of the framework documents.
 
 Both are v1.4 (2026-07-29). The report opens with a changelog against v1.3.
 
+## Read online
+
+The committed static build lives in [`docs/`](docs/) and is ready for GitHub
+Pages to serve from the `main` branch's `/docs` directory.
+
+## Build the site
+
+The build has no package or network dependencies; Python 3's standard library
+is enough.
+
+```sh
+python3 site/build.py
+python3 site/build.py --check
+```
+
+The first command regenerates `docs/`. The second builds into a temporary
+directory, checks every local page and section link, and verifies that the
+result is byte-for-byte identical to the committed build. CI runs the check on
+every push and pull request.
+
 ## Where to start
 
 The report is written as a technical reference, not as an introduction. If you

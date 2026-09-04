@@ -13,7 +13,11 @@ from urllib.parse import urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCES = {
-    "index.html": ROOT / "README.md",
+    # The landing page has its own source. It used to be README.md, which meant
+    # the published page opened with a table of source filenames and
+    # `python3 site/build.py` — repository documentation served to readers who
+    # came for the framework (G-070).
+    "index.html": ROOT / "index.md",
     "report.html": ROOT / "ADUS-tech-report-v1.4.md",
     "glossary.html": ROOT / "ADUS-glossary-v1.4.md",
 }

@@ -10,38 +10,34 @@
 <body>
   <a class="skip-link" href="#content">Skip to content</a>
   <header class="site-header"><a class="brand" href="index.html">ADUS <span>v1.4</span></a><nav aria-label="Primary"><a href="index.html" aria-current="page">Overview</a><a href="report.html">Technical report</a><a href="glossary.html">Glossary</a></nav></header>
-  <div class="layout"><nav class="toc" aria-label="On this page"><h2>On this page</h2><ol><li class="toc-level-2"><a href="#contents">Contents</a></li><li class="toc-level-2"><a href="#read-online">Read online</a></li><li class="toc-level-2"><a href="#build-the-site">Build the site</a></li><li class="toc-level-2"><a href="#where-to-start">Where to start</a></li><li class="toc-level-2"><a href="#related-work">Related work</a></li><li class="toc-level-2"><a href="#status">Status</a></li><li class="toc-level-2"><a href="#citation">Citation</a></li></ol></nav><main id="content"><h1 id="adus-a-functional-architecture-of-intelligence">ADUS — a functional architecture of intelligence<a class="permalink" href="#adus-a-functional-architecture-of-intelligence" aria-label="Link to this section">#</a></h1>
-<p><strong>ADUS</strong> describes intelligence as four continuously interacting components: <strong>abilities</strong>, <strong>dispositions</strong>, <strong>understandings</strong> and <strong>skills</strong>. It is a <em>functional</em> architecture — components are identified by role and information flow rather than by substrate — which is what lets the same vocabulary apply to human and artificial systems, and what makes it usable for both pedagogy and AI design.</p>
-<p>This repository is the home of the framework documents.</p>
-<h2 id="contents">Contents<a class="permalink" href="#contents" aria-label="Link to this section">#</a></h2>
-<div class="table-wrap"><table><thead><tr><th>Document</th><th>What it is</th></tr></thead><tbody>
-<tr><td><a href="report.html">ADUS-tech-report-v1.4.md</a></td><td>The framework itself: component model, zones, consolidation channels, automaticity / awareness / controllability parameters, proposed assays, and nine falsifiable claims.</td></tr>
-<tr><td><a href="glossary.html">ADUS-glossary-v1.4.md</a></td><td>Term-by-term reference, with notation and the distinctions the framework depends on. Read alongside the report rather than after it.</td></tr>
-</tbody></table></div>
-<p>Both are v1.4 (2026-07-29). The report opens with a changelog against v1.3.</p>
-<h2 id="read-online">Read online<a class="permalink" href="#read-online" aria-label="Link to this section">#</a></h2>
-<p>The committed static build lives in <a href="index.html">`docs/`</a> and is ready for GitHub Pages to serve from the <code>main</code> branch's <code>/docs</code> directory.</p>
-<h2 id="build-the-site">Build the site<a class="permalink" href="#build-the-site" aria-label="Link to this section">#</a></h2>
-<p>The build has no package or network dependencies; Python 3's standard library is enough.</p>
-<pre><code>python3 site/build.py
-python3 site/build.py --check</code></pre>
-<p>The first command regenerates <code>docs/</code>. The second builds into a temporary directory, checks every local page and section link, and verifies that the result is byte-for-byte identical to the committed build. CI runs the check on every push and pull request.</p>
-<h2 id="where-to-start">Where to start<a class="permalink" href="#where-to-start" aria-label="Link to this section">#</a></h2>
-<p>The report is written as a technical reference, not as an introduction. If you want the argument rather than the specification:</p>
+  <div class="layout"><nav class="toc" aria-label="On this page"><h2>On this page</h2><ol><li class="toc-level-2"><a href="#why-split-intelligence-four-ways">Why split intelligence four ways</a></li><li class="toc-level-2"><a href="#where-to-start">Where to start</a></li><li class="toc-level-2"><a href="#related-work">Related work</a></li><li class="toc-level-2"><a href="#status">Status</a></li><li class="toc-level-2"><a href="#citation">Citation</a></li></ol></nav><main id="content"><h1 id="adus-a-functional-architecture-of-intelligence">ADUS — a functional architecture of intelligence<a class="permalink" href="#adus-a-functional-architecture-of-intelligence" aria-label="Link to this section">#</a></h1>
+<p>Two people sit at a piano. One plays fluently and cannot explain why the chord she just played resolves the way it does. The other can explain it precisely, and cannot play it. Neither is more intelligent than the other. They differ in <em>which part</em> of intelligence they have developed.</p>
+<p>ADUS is a way of naming those parts. It describes intelligence as four things that are always interacting:</p>
 <ul>
-<li><strong><a class="section-ref" href="report.html#1-purpose">§1</a>–<a class="section-ref" href="report.html#3-component-model">§3</a></strong> give the component model and the consolidation channels (C-N / C-X / C-T / C-S), which is the part most relevant to current AI.</li>
-<li><strong><a class="section-ref" href="report.html#9-falsifiable-claims">§9</a></strong> is the list of falsifiable claims. It is the shortest route to understanding what the framework commits to.</li>
-<li>The glossary entry for a term is usually clearer than the report's first use of it.</li>
+<li><strong>Abilities</strong> — what the body and brain can do before anything is learned. You have the ability to acquire language; reading and speaking are not abilities but things you then learn. For an AI, abilities are its inputs, its processing, its memory, and its outputs.</li>
+<li><strong>Dispositions</strong> — what makes a system act: drives, habits, preferences, values, goals. Terence Tao is not merely very capable at mathematics; he had a drive to study and practise it from a young age. In a language model, this is close to what people call its persona — and it is where most AI safety concern actually lives.</li>
+<li><strong>Understandings</strong> — the associations and operations that connect experiences and concepts. Understandings are not simply right or wrong; they have degrees of accuracy, precision and completeness. A misunderstanding has the wrong associations; an imprecise one is broadly right but vague.</li>
+<li><strong>Skills</strong> — actions and sequences of actions, judged by quality and timing. Playing the instrument is a skill. So is solving an equation, which is mostly an application of understanding performed well and quickly.</li>
 </ul>
+<p>That is the whole vocabulary. The pianist who cannot explain the chord has the skill without the understanding; her companion has the understanding without the skill. Ordinary language blurs them together as "knowing how to play", and the blur is what makes conversations about intelligence — human or artificial — go in circles.</p>
+<h2 id="why-split-intelligence-four-ways">Why split intelligence four ways<a class="permalink" href="#why-split-intelligence-four-ways" aria-label="Link to this section">#</a></h2>
+<p>Because it turns vague questions into answerable ones.</p>
+<p>"Is this system intelligent?" has no useful answer. "Which of these four has it got, and which is it missing?" does. Current language models have a great deal of understanding and considerable skill at applying it. What they mostly lack is the ability to <em>acquire and keep</em> new understanding while running — every conversation starts from the same place. Naming that as a missing <strong>ability</strong>, rather than a shortfall of intelligence in general, points at what would have to be built.</p>
+<p>The same split does work for people. If someone is not learning, it is worth knowing whether the obstacle is an ability, a disposition, a missing prerequisite understanding, or an unpractised skill, because the four call for different responses.</p>
+<p>ADUS is a <em>functional</em> architecture: components are identified by the role they play and the way information moves between them, not by what they are made of. That is what lets one vocabulary cover a person and a neural network without claiming the two are alike underneath.</p>
+<h2 id="where-to-start">Where to start<a class="permalink" href="#where-to-start" aria-label="Link to this section">#</a></h2>
+<p><strong>If you want the argument</strong>, read <a href="https://tobylightheart.github.io/research/2026/09/04/recursive-understanding-improvement-through-network-construction.html">Recursive Understanding Improvement through Network Construction</a>. It introduces ADUS in the course of making a case about AI takeoff and is written to be read straight through.</p>
+<p><strong>If you want the framework itself</strong>, the <a href="report.html">technical report</a> is a specification rather than an introduction. <a class="section-ref" href="report.html#1-purpose">§1</a>–<a class="section-ref" href="report.html#3-component-model">§3</a> carry the component model and the ways understanding is consolidated, which is the part most relevant to current AI. <a class="section-ref" href="report.html#9-falsifiable-claims">§9</a> is a list of nine claims stated so that they can be shown false — the shortest route to what the framework actually commits to.</p>
+<p><strong>If a term is doing more work than it seems</strong>, the <a href="glossary.html">glossary</a> is usually clearer than the report's first use of it. Read it alongside the report, not after.</p>
 <h2 id="related-work">Related work<a class="permalink" href="#related-work" aria-label="Link to this section">#</a></h2>
 <ul>
-<li><strong><a href="https://github.com/symbolfarm/retention-bench">retention-bench</a></strong> — a research instrument for measuring whether what a system learned survives a discontinuity that erases working state. It is the measurement side of the consolidation claims here.</li>
-<li><strong>constructive-retention</strong> — experiments in constructive algorithms for memory consolidation. In progress, not yet public.</li>
-<li><strong>adus-harness</strong> — an agent harness designed explicitly around the ADUS components. In early scoping, not yet public.</li>
+<li><strong><a href="https://github.com/symbolfarm/retention-bench">retention-bench</a></strong> — a research instrument that measures whether what a system learned survives a discontinuity that wipes its working state. It is the measurement side of the claims made here about consolidation.</li>
+<li><strong>constructive-retention</strong> — experiments in growing network components to consolidate memory. In progress, not yet public.</li>
+<li><strong>adus-harness</strong> — an agent harness built explicitly around these four components. In early scoping, not yet public.</li>
 </ul>
 <h2 id="status">Status<a class="permalink" href="#status" aria-label="Link to this section">#</a></h2>
-<p>Independent research, actively revised. The framework is a working instrument rather than a settled result: version numbers move, claims are reformulated when they turn out not to discriminate, and the v1.3 → v1.4 changelog is a fair sample of how much can change between versions.</p>
-<p>Feedback and criticism are welcome — the claims in <a class="section-ref" href="report.html#9-falsifiable-claims">§9</a> are stated to be falsifiable, and finding one false is useful.</p>
+<p>Independent research, actively revised, currently at v1.4 (2026-07-29). The framework is a working instrument rather than a settled result: version numbers move, and claims get reformulated when they turn out not to discriminate between anything.</p>
+<p>Feedback and criticism are welcome. The claims in <a class="section-ref" href="report.html#9-falsifiable-claims">§9</a> are stated to be falsifiable, and finding one false is useful.</p>
 <h2 id="citation">Citation<a class="permalink" href="#citation" aria-label="Link to this section">#</a></h2>
 <pre><code>@techreport{ADUSv1_4,
   title  = {{ADUS: A Functional Architecture of Intelligence (v1.4)}},

@@ -4,6 +4,16 @@ Companion reference to *ADUS Framework – Technical Report (v1.4)*. Entries are
 
 Entries marked **[gap]** are terms the report uses without defining; a proposed definition is given, but it is a proposal, not a restatement. These are collected again in the final section.
 
+**If the notation is new to you:** start with one ordinary example. Learning to
+drive begins as a step-by-step **Zone-3 skill**, becomes a partly effortful
+**Zone-2 skill**, and may become a fluent **Zone-1 skill**. **Do_A** describes
+that growing automaticity; **Aw** asks whether the driver can accurately notice
+what the automatic process is doing; **Cn** asks whether it can be stopped or
+redirected. If the lesson is forgotten, written in a notebook, reinforced by an
+instructor, or deliberately practised by the driver, those are respectively
+**C-N**, **C-X**, **C-T**, and **C-S** consolidation channels. The entries below
+make those distinctions precise.
+
 ---
 
 ## **Reading order**

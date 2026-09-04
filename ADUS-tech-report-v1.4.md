@@ -1,15 +1,41 @@
 # **ADUS Framework – Technical Report (v1.4)**
 
+## **Plain-language summary**
+
+Intelligence is not one thing that a person or an AI simply has more or less
+of. ADUS separates it into four interacting parts: **abilities** set what can be
+learned, **dispositions** supply motives and habits, **understandings** store
+what has been grasped, and **skills** put it into action. The pianist who can
+play a chord but cannot explain it has skill without the matching
+understanding; someone who can explain the chord but cannot play it has the
+reverse. This split matters because each kind of limitation calls for a
+different remedy.
+
+The framework also distinguishes effortful performance from performance that
+has become automatic. It asks whether a process can be brought back into
+awareness, whether it can be redirected, and whether learning survives beyond
+the current episode. For present-day language models, ADUS's central diagnosis
+is not simply that they need more knowledge: it is that they largely lack an
+ability to consolidate new understanding and skill while they are running.
+
+The report turns that diagnosis into measurements and nine claims that could be
+shown false. Technical notation is retained because precision is the point;
+plain-language explanations are layered alongside it so a reader can first see
+what each distinction is for.
+
 ## **0. Changelog from v1.3**
+
+This version separates several ideas that v1.3 treated as one, especially what
+a system can learn, how automatic a process is, and how learning persists.
 
 * **§2 level of analysis restated**: functional-primary with implementation evidence admissible, plus an explicit priority rule. Resolves a latent inconsistency between v1.3 §2 (functional only) and v1.3 §8 (architectural definition of A).
 * **§3 A split into qualitative and quantitative change**, with a reachability criterion. Level 2 redefined as A-qualitative change. Capacity scaling is A-quantitative.
 * **§3 consolidation added as an A sub-domain.** Consolidation capacity governs the zone-transition rate and is therefore an ability, not a rate parameter.
-* **§3.1 zones redefined on the load axis alone.** Plasticity removed from the zone definition and reintroduced as a channel-relative transition *rate*. Consolidation channels (C-N / C-X / C-T / C-S) introduced.
+* **§3.1 zones redefined on the load axis alone.** A zone says how much conscious effort a process currently needs: fluent, partly effortful, or step-by-step. Plasticity removed from the zone definition and reintroduced as a channel-relative transition *rate*. Consolidation channels introduced: C-N (nothing persists), C-X (an external aid keeps it), C-T (a trainer updates the system), and C-S (the system initiates its own update).
 * **§6 retest criterion now channel-indexed.** New proposed LLM load assay (constrained reasoning budget).
 * **§8 revised**: A row corrected, consolidation deficit stated as an A deficit, internal simulation given a functional criterion and assay, and environment parameters (V, coverage) added as adjacent concepts.
 * **§9 claim 4 reformulated** as a C-X vs C-T slope comparison. New claims 7–9.
-* **Editorial**: automaticity notation normalised to Do_A(X). See §3 note.
+* **Editorial**: automaticity — how independently a process runs once started, like touch-typing without choosing each key — is written consistently as Do_A(X). See §3 note.
 
 ---
 
@@ -20,6 +46,9 @@ Mechanistic, functional architecture of intelligence that bridges psychometric s
 ---
 
 ## **2. Level of Analysis**
+
+ADUS classifies a component by what it does, while allowing implementation
+details to serve as evidence about that function.
 
 ADUS is a **functional architecture with implementation evidence admissible**. Two commitments, in priority order.
 
@@ -37,7 +66,10 @@ The template already present in v1.3 is the proposed Aw assay: an implementation
 
 ## **3. Component Model**
 
-Four continuously interacting nodes. Each carries an **automaticity parameter** Do_A( ), an **awareness parameter** Aw( ), and a **controllability parameter** Cn( ), each ranging 0–1.
+The model separates four kinds of working part, then describes the current
+state of each part with three parameters.
+
+Four continuously interacting nodes. Each carries an **automaticity parameter** Do_A( ) (how little deliberate attention it needs, like a familiar route home), an **awareness parameter** Aw( ) (how accurately the actor can inspect it, like noticing why a habit fired), and a **controllability parameter** Cn( ) (how well the actor can stop or redirect it, like withholding an automatic reply), each ranging 0–1.
 
 | Node | Symbol | Definition | Sub-domains |
 | ----- | ----- | ----- | ----- |
@@ -52,6 +84,9 @@ Four continuously interacting nodes. Each carries an **automaticity parameter** 
 
 ### **3.1 Abilities: qualitative and quantitative change**
 
+Ability changes either open a genuinely new kind of learning or enlarge the
+capacity available for kinds that were already possible.
+
 A is **architecturally afforded, not architecturally given.** Architecture bounds the set of U and S that are reachable at all; training determines which of the afforded set is realised. A capacity that emerges under gradient descent in a fixed architecture is *A-realisation*, not new A.
 
 Two kinds of change to A, distinguished by the ceiling edges A→U and A→S:
@@ -64,6 +99,9 @@ Two kinds of change to A, distinguished by the ceiling edges A→U and A→S:
 This keeps "Level 2 requires architectural change" from being merely analytic. The substantive and open claim is: **the reachable set under a fixed transformer trained by gradient descent is a proper subset of the reachable set under architectures with dedicated episodic, simulative, executive, or consolidative structure.** If that is false, Level 2 is unnecessary for those capacities.
 
 ### **3.2 Consolidation as an ability**
+
+Consolidation is the ability that lets today's effortful learning become
+tomorrow's durable, fluent competence.
 
 Consolidation capacity — the existence and quality of a route by which Zone-2/3 content becomes Zone-1 content — is an A sub-domain, not a free rate parameter.
 
@@ -81,6 +119,11 @@ A supplies the capacity, the channel supplies the route, and awareness supplies 
 
 **Zone is position on the load axis only.**
 
+In everyday terms, a Zone-3 learner follows each step of a new recipe, a Zone-2
+cook still checks it occasionally, and a Zone-1 cook prepares the dish while
+holding a conversation. The zones describe current effort, not what kind of
+component is doing the work.
+
 | Zone | Behavioural definition | Provisional Do_A range |
 | ----- | ----- | ----- |
 | **Zone-1 (core / trait)** | Dual-task cost < 10%; no explicit stepwise execution required; resistant to single-session intervention | ≥ 0.9 (to be fitted) |
@@ -91,16 +134,19 @@ A supplies the capacity, the channel supplies the route, and awareness supplies 
 
 | Channel | Route |
 | ----- | ----- |
-| **C-N** | No route. Gains do not outlast the episode. |
-| **C-X** | External artifact. Gains persist in a store outside the agent and are re-presented on later episodes. |
-| **C-T** | Substrate, other-initiated. Gains reach the weights via a training process the agent does not initiate. |
-| **C-S** | Substrate, self-initiated. The agent initiates the update to its own substrate. |
+| **C-N** | No route. Gains do not outlast the episode — like solving a problem and keeping no notes or memory of it. |
+| **C-X** | External artifact. Gains persist outside the agent and are re-presented later — like consulting yesterday's notebook. |
+| **C-T** | Substrate, other-initiated. Gains reach the weights through training the agent does not initiate — like a teacher scheduling the next practice session. |
+| **C-S** | Substrate, self-initiated. The agent initiates its own update — like noticing a weakness and choosing to practise it until it sticks. |
 
 Retest gain is therefore measured **under a specified channel**. The v1.3 criterion (30-day retest gain < 5%) tacitly assumed human C-T, which is why it degenerates on frozen artificial systems: under C-N every rate is zero by construction, placing the entire system in Zone-1 including components that collapse under load. Separating the axes makes that degeneracy a finding rather than a measurement failure.
 
 Note that the channels differ in how much of the consolidation machinery sits inside the agent. C-T requires nothing of the agent. C-X requires an S (externalisation practice) plus an environmental affordance. C-S requires the A of §3.2. This is why the taxonomy is a substrate ladder with an initiation qualifier on the substrate rung, rather than two independent axes.
 
 ### **3.4 Awareness & Control Parameters**
+
+Aw asks whether an actor can accurately inspect an automatic process; Cn asks
+whether the actor can interrupt or redirect it.
 
 **Awareness Aw( )** — "re-conscious-isation" gain, graded 0–1. 1 = the actor can voluntarily bring a high-automaticity (Zone-1) process back into conscious working memory and **veridically** report its content; 0 = the process remains opaque even when explicitly probed. Veridicality is the criterion, not fluency: confident, articulate self-report with no predictive relationship to the underlying process scores Aw ≈ 0. Confabulation is the Aw = 0 failure mode with high verbal output. Human assay: process-dissociation hit-rate (probe-cued report of last automatic stimulus or rule). Binary shortcut: correct vs incorrect probe report.
 
@@ -112,6 +158,9 @@ Both parameters are hypothesised to be trainable yet trait-like stable; stabilit
 
 ## **4. Operational Boundaries**
 
+These boundaries prevent capacities, stored content, learned procedures, and
+motivation from being renamed as one another when their behaviour changes.
+
 * **A ↔ S**: Do_A(A) vs Do_A(S) determine node placement; developmental windows can lock A into Zone-1.
 * **A-qual ↔ A-quant**: reachability of the U/S set, not magnitude of the ceiling (§3.1).
 * **U ↔ S**: PS quantifies proceduralisation; bidirectional edges carry PS and IS (insight strength).
@@ -122,6 +171,9 @@ Aw( ) opens a transient →U edge with weight = Aw × Do_A. Cn( ) applies a mult
 ---
 
 ## **5. Interaction Matrix (4×4)**
+
+The interaction matrix records which of the four components is influencing
+which other component, rather than treating intelligence as a single score.
 
 Directed cell = **source → target** influence; strength = fitted coefficient or experimental effect size. Key high-impact paths:
 
@@ -142,6 +194,9 @@ Amplification of an automatism (craving-driven habit strengthening, arousal-driv
 
 ## **6. Measurement Suite (2 h battery)**
 
+The measurement suite replaces impressionistic labels with observable costs,
+gains, and response times.
+
 * **Do_A(A) / Do_A(S)**: dual-task cost. *Retest is channel-indexed*: report the channel under which retest gain was measured (§3.3). Human default is C-T.
 * **Do_A(D)**: Loop A affective-priming RT; Loop B EEfRT effort-discounting; Loop C slip-of-action habit test.
 * **PS**: retrieval latency + dual-task cost during recall.
@@ -160,6 +215,9 @@ The load axis needs an artificial analogue or the §8 placements are assigned by
 
 ## **7. Human Enhancement Heuristics**
 
+For people, the framework points interventions at the specific transition or
+connection that is weak instead of prescribing a generic intelligence boost.
+
 * **Zone-3 → 2**: deliberate practice + fluency pressure
 * **Zone-2 → 1**: spaced over-learning; critical-period sensitive for A
 * **Mismatch diagnosis**: high A + low D → under-achievement; high U + low S → knowing-without-doing
@@ -169,6 +227,9 @@ Interventions target **matrix edges**, not nodes, for multiplicative gain. Under
 ---
 
 ## **8. AI / LLM Mapping**
+
+For AI systems, ADUS separates architectural ceilings from learned content and
+identifies durable self-directed learning as the central missing ability.
 
 **A for artificial systems** = architectural capacities: context length, attention capacity, parameter count, inductive biases, and the presence or absence of a consolidation route. These bound the reachable set of U and S. Learned content, however frozen, is not A. Per §3.1, scaling these quantities is A-quantitative; adding structure that expands the reachable set is A-qualitative.
 
@@ -214,19 +275,39 @@ Human parallels are worth stating carefully, since they are usually conflated. B
 
 ## **9. Falsifiable Claims**
 
+These are the framework's nine precise bets; each is followed by a draft
+plain-language reading that must not replace the testable wording.
+
+**Ratification status.** The plain-language readings below are editorial drafts,
+not assertions of equivalence. Toby must ratify, amend, or reject them before
+they are presented as faithful restatements; the numbered claims themselves are
+unchanged.
+
 1. Do_A(D) Loop-B baseline predicts 8-week knowledge gain (U) controlling for A (β > 0.3).
+   **Draft plain-language reading:** A person's starting willingness to expend effort should predict how much they learn over eight weeks, even after accounting for their underlying ability.
 2. PS mediates U→S transfer (≥ 50% of effect).
+   **Draft plain-language reading:** At least half of the path from understanding something to performing it skilfully should be explained by that understanding becoming a practised procedure.
 3. Habit-loop Do_A(D) Loop-C moderates the D→U slope (interaction p < 0.01).
+   **Draft plain-language reading:** Existing habits should measurably change how strongly motivation turns into new understanding.
 4. **(Revised.)** Under matched task streams, C-X and C-T both produce positive downstream skill gain, but **per-session gain under C-X is flat or decaying while under C-T it is flat or increasing.** Prediction: slope divergence over ≥ 10 sessions. *Rationale: under C-X the retrieval mechanism does not itself improve from the gains it stores, so nothing makes the next gain easier. This tests the recursion claim rather than the existence claim, which v1.3's formulation could not discriminate.*
+   **Draft plain-language reading:** Notes and trainer-led updates can both help, but repeated trainer-led updates should keep making learning easier while relying on notes alone should not produce that compounding improvement.
 5. Dual-task cost < 10% AND PS > 0.7 ⇒ behaviour indistinguishable from Zone-1 core.
+   **Draft plain-language reading:** A well-practised behaviour that loses less than ten percent under distraction should look like an automatic core behaviour.
 6. Aw and Cn show trait-like retest stability (r > 0.7 over 6 months) while remaining responsive to targeted training (≥ 0.3 SD gain from an 8-week mindfulness or inhibition protocol). *(To be anchored against published stop-signal / SSRT reliability estimates.)*
+   **Draft plain-language reading:** People's ability to inspect and redirect automatic processes should be fairly stable over six months, but should still improve measurably after focused training.
 7. **V × Aw substitution.** Systems with Aw(U) ≈ 0 show reliable self-improvement where V is high (formal verifier, execution feedback) and negligible improvement where V is low (learned judge, intrinsic signal). The effect of raising Aw is larger at low V than at high V (negative interaction term).
+   **Draft plain-language reading:** A system that cannot accurately inspect its own understanding can still improve when the world gives clear right-or-wrong feedback; better self-inspection matters most when that external feedback is weak.
 8. **Internal simulation.** Under the §8.2 assay, simulation-dependent performance in current frontier models collapses when the output channel is constrained — i.e. roll-forward is externalised, not internal.
+   **Draft plain-language reading:** Current frontier models should lose tasks that require mentally running a situation forward when they are prevented from working it out through their output.
 9. **Consolidation as reachability (Level 2 test).** There exist tasks unreachable under C-N *at any context budget* that become reachable under C-T. This discriminates consolidation-as-ability (§3.2) from consolidation-as-rate: the rate reading predicts only slower acquisition, the ability reading predicts a reachability boundary. Directly testable on a continual-learning benchmark with parametric hard-resets.
+   **Draft plain-language reading:** Some tasks should remain impossible no matter how much temporary working space a non-learning system receives, yet become possible when training can make learning persist.
 
 ---
 
 ## **10. File Formats & Links**
+
+The diagnostic battery, data schema, and registration templates named here are
+planned interfaces, not implemented resources.
 
 **Yet to be implemented**
 
@@ -237,6 +318,8 @@ Human parallels are worth stating carefully, since they are usually conflated. B
 ---
 
 ## **11. Citation**
+
+Use this citation when referring to version 1.4 of the framework.
 
 ```
 @techreport{ADUSv1_4,

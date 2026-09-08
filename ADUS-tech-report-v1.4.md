@@ -275,32 +275,31 @@ Human parallels are worth stating carefully, since they are usually conflated. B
 
 ## **9. Falsifiable Claims**
 
-These are the framework's nine precise bets; each is followed by a draft
+These are the framework's nine precise bets; each is followed by a
 plain-language reading that must not replace the testable wording.
 
-**Ratification status.** The plain-language readings below are editorial drafts,
-not assertions of equivalence. Toby must ratify, amend, or reject them before
-they are presented as faithful restatements; the numbered claims themselves are
-unchanged.
+For the method behind these readings, see the dated companion explainer,
+*The nine claims, in plain language* (2026-09-08).
 
 1. Do_A(D) Loop-B baseline predicts 8-week knowledge gain (U) controlling for A (β > 0.3).
-   **Draft plain-language reading:** A person's starting willingness to expend effort should predict how much they learn over eight weeks, even after accounting for their underlying ability.
+   **Plain-language reading:** A person's starting willingness to expend effort should predict how much they learn over eight weeks with β > 0.3, even after accounting for their underlying ability.
 2. PS mediates U→S transfer (≥ 50% of effect).
-   **Draft plain-language reading:** At least half of the path from understanding something to performing it skilfully should be explained by that understanding becoming a practised procedure.
+   **Plain-language reading:** At least half of the path from understanding something to performing it skilfully should be explained by that understanding becoming a practised procedure.
 3. Habit-loop Do_A(D) Loop-C moderates the D→U slope (interaction p < 0.01).
-   **Draft plain-language reading:** Existing habits should measurably change how strongly motivation turns into new understanding.
+   **Plain-language reading:** Existing habits should change how strongly motivation turns into new understanding, with the interaction meeting a p < 0.01 threshold.
 4. **(Revised.)** Under matched task streams, C-X and C-T both produce positive downstream skill gain, but **per-session gain under C-X is flat or decaying while under C-T it is flat or increasing.** Prediction: slope divergence over ≥ 10 sessions. *Rationale: under C-X the retrieval mechanism does not itself improve from the gains it stores, so nothing makes the next gain easier. This tests the recursion claim rather than the existence claim, which v1.3's formulation could not discriminate.*
-   **Draft plain-language reading:** Notes and trainer-led updates can both help, but repeated trainer-led updates should keep making learning easier while relying on notes alone should not produce that compounding improvement.
+   **Plain-language reading:** Notes and trainer-led updates can both help, but repeated trainer-led updates should keep making learning easier while relying on notes alone should not produce that compounding improvement.
 5. Dual-task cost < 10% AND PS > 0.7 ⇒ behaviour indistinguishable from Zone-1 core.
-   **Draft plain-language reading:** A well-practised behaviour that loses less than ten percent under distraction should look like an automatic core behaviour.
+   **Plain-language reading:** A well-practised behaviour that loses less than ten percent under distraction should look like an automatic core behaviour.
 6. Aw and Cn show trait-like retest stability (r > 0.7 over 6 months) while remaining responsive to targeted training (≥ 0.3 SD gain from an 8-week mindfulness or inhibition protocol). *(To be anchored against published stop-signal / SSRT reliability estimates.)*
-   **Draft plain-language reading:** People's ability to inspect and redirect automatic processes should be fairly stable over six months, but should still improve measurably after focused training.
-7. **V × Aw substitution.** Systems with Aw(U) ≈ 0 show reliable self-improvement where V is high (formal verifier, execution feedback) and negligible improvement where V is low (learned judge, intrinsic signal). The effect of raising Aw is larger at low V than at high V (negative interaction term).
-   **Draft plain-language reading:** A system that cannot accurately inspect its own understanding can still improve when the world gives clear right-or-wrong feedback; better self-inspection matters most when that external feedback is weak.
+   **Plain-language reading:** People's ability to inspect and redirect automatic processes should show six-month retest stability above r = 0.7, while still improving by at least 0.3 standard deviations after focused training.
+7. **7a.** **V × Aw substitution.** Systems with Aw(U) ≈ 0 show reliable self-improvement where V is high (formal verifier, execution feedback) and negligible improvement where V is low (learned judge, intrinsic signal). **7b.** The effect of raising Aw is larger at low V than at high V (negative interaction term).
+   **7a plain-language reading:** A system that cannot accurately inspect its own understanding can still improve when the world gives clear right-or-wrong feedback, but should improve negligibly when external feedback is weak.
+   **7b plain-language reading:** Better self-inspection should help more when external feedback is weak than when it is strong.
 8. **Internal simulation.** Under the §8.2 assay, simulation-dependent performance in current frontier models collapses when the output channel is constrained — i.e. roll-forward is externalised, not internal.
-   **Draft plain-language reading:** Current frontier models should lose tasks that require mentally running a situation forward when they are prevented from working it out through their output.
+   **Plain-language reading:** Current frontier models should lose tasks that require mentally running a situation forward when they are prevented from working it out through their output.
 9. **Consolidation as reachability (Level 2 test).** There exist tasks unreachable under C-N *at any context budget* that become reachable under C-T. This discriminates consolidation-as-ability (§3.2) from consolidation-as-rate: the rate reading predicts only slower acquisition, the ability reading predicts a reachability boundary. Directly testable on a continual-learning benchmark with parametric hard-resets.
-   **Draft plain-language reading:** Some tasks should remain impossible no matter how much temporary working space a non-learning system receives, yet become possible when training can make learning persist.
+   **Plain-language reading:** Some tasks should remain impossible no matter how much temporary working space a non-learning system receives, yet become possible when training can make learning persist.
 
 ---
 

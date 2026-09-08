@@ -20,13 +20,11 @@ SOURCES = {
     "index.html": ROOT / "index.md",
     "report.html": ROOT / "ADUS-tech-report-v1.4.md",
     "glossary.html": ROOT / "ADUS-glossary-v1.4.md",
-    "claims.html": ROOT / "ADUS-claims-explainer.md",
 }
 TITLES = {
     "index.html": "ADUS — a functional architecture of intelligence",
     "report.html": "ADUS Framework — Technical Report v1.4",
     "glossary.html": "ADUS v1.4 — Glossary",
-    "claims.html": "ADUS v1.4 — The nine claims, in plain language",
 }
 
 
@@ -76,8 +74,6 @@ def link_target(target: str) -> str:
         return "report.html"
     if target.endswith("ADUS-glossary-v1.4.md"):
         return "glossary.html"
-    if target.endswith("ADUS-claims-explainer.md"):
-        return "claims.html"
     return target
 
 
@@ -212,7 +208,7 @@ def toc(headings: list[tuple[int, str, str]]) -> str:
 
 
 def shell(page: str, body: str, headings: list[tuple[int, str, str]]) -> str:
-    nav = "".join(f'<a href="{href}"{(" aria-current=\"page\"" if href == page else "")}>{label}</a>' for href, label in (("index.html", "Overview"), ("report.html", "Technical report"), ("claims.html", "The nine claims"), ("glossary.html", "Glossary")))
+    nav = "".join(f'<a href="{href}"{(" aria-current=\"page\"" if href == page else "")}>{label}</a>' for href, label in (("index.html", "Overview"), ("report.html", "Technical report"), ("glossary.html", "Glossary")))
     return f'''<!doctype html>
 <html lang="en">
 <head>

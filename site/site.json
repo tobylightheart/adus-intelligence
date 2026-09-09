@@ -1,0 +1,39 @@
+{
+  "description": "ADUS v1.4 framework documents",
+  "brand": "ADUS",
+  "brand_suffix": "v1.4",
+  "footer_html": "<p>Independent research · <a href=\"https://github.com/symbolfarm/retention-bench\">Retention Bench</a> measures the consolidation claims.</p>",
+  "output": "../docs",
+  "stylesheet": "styles.css",
+  "write_nojekyll": true,
+  "section_reference_page": "report.html",
+  "aliases": {
+    "docs": "index.html",
+    "docs/": "index.html"
+  },
+  "pages": [
+    {
+      "source": "../index.md",
+      "output": "index.html",
+      "title": "ADUS — a functional architecture of intelligence"
+    },
+    {
+      "source": "../ADUS-tech-report-v1.4.md",
+      "output": "report.html",
+      "title": "ADUS Framework — Technical Report v1.4"
+    },
+    {
+      "source": "../ADUS-glossary-v1.4.md",
+      "output": "glossary.html",
+      "title": "ADUS v1.4 — Glossary"
+    }
+  ],
+  "navigation": [
+    {"page": "index.html", "label": "Overview"},
+    {"page": "report.html", "label": "Technical report"},
+    {"page": "glossary.html", "label": "Glossary"}
+  ],
+  "assets": [
+    {"source": "styles.css", "output": "styles.css"}
+  ]
+}

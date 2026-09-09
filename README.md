@@ -26,7 +26,9 @@ Pages to serve from the `main` branch's `/docs` directory.
 ## Build the site
 
 The build has no package or network dependencies; Python 3's standard library
-is enough.
+is enough. Site-specific pages, navigation, assets and output live in
+[`site/site.json`](site/site.json); the builder itself has no ADUS-specific
+source or title map.
 
 ```sh
 python3 site/build.py
@@ -34,9 +36,27 @@ python3 site/build.py --check
 ```
 
 The first command regenerates `docs/`. The second builds into a temporary
-directory, checks every local page and section link, and verifies that the
-result is byte-for-byte identical to the committed build. CI runs the check on
-every push and pull request.
+directory, checks every local page, section link, declared asset and explainer
+metadata field, and verifies that the result is byte-for-byte identical to the
+committed build. CI runs the check on every push and pull request.
+
+The script is also a standalone explainer builder. Pass another JSON file with
+`--config path/to/site.json`; relative source, asset and output paths resolve
+from that config's directory. A config declares:
+
+- `pages`: Markdown source → HTML output and title, with an optional `explainer`
+  declaration (`layer`, `audience`, `as_of`, `status`, `provenance`, and the
+  `not_human_reviewed` caveat when it applies);
+- `navigation`: output pages and labels, independently of the source map;
+- `assets`: the only files or directories copied to declared output paths;
+- the output directory, stylesheet route, shell copy and optional section-link
+  target.
+
+Complete block-level `<svg>…</svg>` is the sole raw-markup passthrough. It must
+have a `viewBox` and accessible name; scripts, event handlers, embedded styles,
+foreign objects and external fetches are rejected. Markdown links to declared
+pages are rewritten from `.md` source routes to their configured `.html`
+outputs.
 
 ## Where to start
 

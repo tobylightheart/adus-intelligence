@@ -26,6 +26,19 @@
       "source": "../ADUS-glossary-v1.4.md",
       "output": "glossary.html",
       "title": "ADUS v1.4 — Glossary"
+    },
+    {
+      "source": "../explainers/G-096-explainer-builder.md",
+      "output": "explainer-builder-2026-09-10.html",
+      "title": "One file between a finding and a dependable page",
+      "explainer": {
+        "layer": "altitude",
+        "audience": "portfolio owner and project contributors",
+        "as_of": "2026-09-10 · builder commits f59274d and 80c6b2b",
+        "status": "current version",
+        "provenance": "G-087 substrate trial, G-096 implementation, repository tests",
+        "not_human_reviewed": true
+      }
     }
   ],
   "navigation": [

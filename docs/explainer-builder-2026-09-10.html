@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="ADUS v1.4 framework documents">
+  <title>One file between a finding and a dependable page</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#content">Skip to content</a>
+  <header class="site-header"><a class="brand" href="index.html">ADUS <span>v1.4</span></a><nav aria-label="Primary"><a href="index.html">Overview</a><a href="report.html">Technical report</a><a href="glossary.html">Glossary</a></nav></header>
+  <div class="layout"><nav class="toc" aria-label="On this page"><h2>On this page</h2><ol><li class="toc-level-2"><a href="#1-what-was-built">1. What was built</a></li><li class="toc-level-2"><a href="#2-what-was-observed">2. What was observed</a></li><li class="toc-level-2"><a href="#3-what-that-could-mean">3. What that could mean</a></li><li class="toc-level-2"><a href="#4-what-could-be-used-or-tested-next">4. What could be used or tested next</a></li><li class="toc-level-2"><a href="#implementation-detail">Implementation detail</a></li></ol></nav><main id="content"><aside class="explainer-meta" aria-label="Explainer declaration"><dl><div><dt>Layer</dt><dd>altitude</dd></div><div><dt>Audience</dt><dd>portfolio owner and project contributors</dd></div><div><dt>As of</dt><dd>2026-09-10 · builder commits f59274d and 80c6b2b</dd></div><div><dt>Status</dt><dd>current version</dd></div><div><dt>Provenance</dt><dd>G-087 substrate trial, G-096 implementation, repository tests</dd></div><div><dt>Review</dt><dd><strong>Not human-reviewed</strong></dd></div></dl></aside><h1 id="one-file-between-a-finding-and-a-dependable-page">One file between a finding and a dependable page<a class="permalink" href="#one-file-between-a-finding-and-a-dependable-page" aria-label="Link to this section">#</a></h1>
+<p>The explainer builder is now a standalone, standard-library script. A project declares Markdown pages, navigation, assets, output and explainer metadata in JSON; the script writes committed HTML and <code>--check</code> proves that rebuilding produces the same bytes.</p>
+<h2 id="1-what-was-built">1. What was built<a class="permalink" href="#1-what-was-built" aria-label="Link to this section">#</a></h2>
+<p>The old ADUS renderer knew three filenames, three titles and one stylesheet in Python. Those choices now live in <code>site/site.json</code>. The script itself can take any config:</p>
+<pre><code>python3 site/build.py --config path/to/site.json
+python3 site/build.py --config path/to/site.json --check</code></pre>
+<div class="inline-svg"><svg viewBox="0 0 760 180" role="img" aria-label="A JSON config and Markdown sources enter one standard-library builder, which emits committed HTML and declared assets before validation loops back over the output">
+  <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="var(--accent, #704b8b)"/></marker></defs>
+  <rect x="10" y="42" width="170" height="88" rx="12" fill="var(--notice-bg, #f2eadc)" stroke="var(--line, #ded6c8)"/>
+  <text x="95" y="76" text-anchor="middle" fill="var(--ink, #23211d)" font-weight="700">JSON config</text>
+  <text x="95" y="101" text-anchor="middle" fill="var(--muted, #6f6a60)">Markdown + assets</text>
+  <path d="M 190 86 H 278" stroke="var(--accent, #704b8b)" stroke-width="3" marker-end="url(#arrow)"/>
+  <rect x="290" y="42" width="180" height="88" rx="12" fill="var(--accent-soft, #e5efe9)" stroke="var(--accent, #704b8b)"/>
+  <text x="380" y="76" text-anchor="middle" fill="var(--ink, #23211d)" font-weight="700">build.py</text>
+  <text x="380" y="101" text-anchor="middle" fill="var(--muted, #6f6a60)">standard library only</text>
+  <path d="M 482 86 H 570" stroke="var(--accent, #704b8b)" stroke-width="3" marker-end="url(#arrow)"/>
+  <rect x="582" y="42" width="168" height="88" rx="12" fill="var(--notice-bg, #f2eadc)" stroke="var(--line, #ded6c8)"/>
+  <text x="666" y="76" text-anchor="middle" fill="var(--ink, #23211d)" font-weight="700">Committed output</text>
+  <text x="666" y="101" text-anchor="middle" fill="var(--muted, #6f6a60)">HTML + assets</text>
+  <path d="M 666 142 V 164 H 380 V 142" fill="none" stroke="var(--accent, #704b8b)" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#arrow)"/>
+  <text x="520" y="176" text-anchor="middle" fill="var(--muted, #6f6a60)" font-size="12">--check: routes · metadata · exact bytes</text>
+</svg></div>
+<h2 id="2-what-was-observed">2. What was observed<a class="permalink" href="#2-what-was-observed" aria-label="Link to this section">#</a></h2>
+<p>The migration changed none of the three existing ADUS pages: a clean rebuild is byte-identical to the committed <code>index.html</code>, <code>report.html</code>, <code>glossary.html</code>, their styles and every section anchor.</p>
+<p>The exact fixture that selected this substrate now passes where the old builder failed. Its <code>second.md</code> link becomes <code>second.html</code>, its separate SVG is copied only because the config declares it, and its inline SVG remains an SVG element. Five tests also prove that incomplete metadata and SVG carrying scripts, event handlers, embedded styles, foreign objects or external fetches are rejected.</p>
+<p>This page is the real close-out trial. It was authored in Markdown, its declaration block came from config, the diagram above went through the audited SVG path, and the HTML you are reading is committed output.</p>
+<h2 id="3-what-that-could-mean">3. What that could mean<a class="permalink" href="#3-what-that-could-mean" aria-label="Link to this section">#</a></h2>
+<p>The strongest reading is narrow: this is enough common substrate for dated explainers without making a documentation framework own every project. Repositories with a working hand-authored or generated site keep it. Repositories without one can adopt a single script and config, while the renderer-independent <code>EXPLAINERS.md</code> convention continues to own what a page must declare.</p>
+<p>A broader reading — that this should become the portfolio's general static-site generator — is not supported. The Markdown subset is deliberately small; there is no search, plugin system or theme package. MkDocs remains the escalation path if shared navigation or search becomes the real requirement.</p>
+<h2 id="4-what-could-be-used-or-tested-next">4. What could be used or tested next<a class="permalink" href="#4-what-could-be-used-or-tested-next" aria-label="Link to this section">#</a></h2>
+<p>A future goal that owes a digest can either use its project's existing substrate or point this builder at a small project-owned config. The useful next test is adoption in a second repository, because that will expose which shell fields are genuinely general and which only looked general while ADUS was the sole permanent user.</p>
+<h2 id="implementation-detail">Implementation detail<a class="permalink" href="#implementation-detail" aria-label="Link to this section">#</a></h2>
+<p>The source-to-output map drives <code>.md</code> route rewriting. Asset sources and destinations are explicit, including directories. Inline SVG is parsed as XML and accepted only as one complete block with a <code>viewBox</code> and accessible name. Validation follows every generated <code>href</code> and <code>src</code>, checks fragments, confirms configured explainer metadata is visible, and compares a temporary build with committed output under <code>--check</code>.</p>
+<p>The weakest point is the parser boundary: it intentionally supports the Markdown this portfolio's explainers currently use, not CommonMark in full. Nested lists, arbitrary HTML and extension syntax should trigger a decision to improve the subset or use MkDocs, not an accumulation of ad hoc exceptions.</p></main></div>
+  <footer><p>Independent research · <a href="https://github.com/symbolfarm/retention-bench">Retention Bench</a> measures the consolidation claims.</p></footer>
+</body>
+</html>

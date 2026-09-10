@@ -15,8 +15,9 @@ This repository is the home of the framework documents.
 | --- | --- |
 | [ADUS-tech-report-v1.4.md](ADUS-tech-report-v1.4.md) | The framework itself: component model, zones, consolidation channels, automaticity / awareness / controllability parameters, proposed assays, and nine falsifiable claims. |
 | [ADUS-glossary-v1.4.md](ADUS-glossary-v1.4.md) | Term-by-term reference, with notation and the distinctions the framework depends on. Read alongside the report rather than after it. |
+| [Builder close-out](docs/explainer-builder-2026-09-10.html) | A dated, not-human-reviewed digest of the standalone explainer builder: what changed, what the fixture proved, and where its deliberately small Markdown boundary sits. |
 
-Both are v1.4 (2026-07-29). The report opens with a changelog against v1.3.
+Both framework documents are v1.4 (2026-07-29). The report opens with a changelog against v1.3.
 
 ## Read online
 

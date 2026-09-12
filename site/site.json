@@ -1,4 +1,5 @@
 {
+  "_builder": "agent-skills/tools/build_pages.py, from a checkout beside this one: python3 ../agent-skills/tools/build_pages.py --check",
   "description": "ADUS v1.4 framework documents",
   "brand": "ADUS",
   "brand_suffix": "v1.4",

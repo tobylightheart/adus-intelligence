@@ -28,12 +28,15 @@ Pages to serve from the `main` branch's `/docs` directory.
 
 The build has no package or network dependencies; Python 3's standard library
 is enough. Site-specific pages, navigation, assets and output live in
-[`site/site.json`](site/site.json); the builder itself has no ADUS-specific
-source or title map.
+[`site/site.json`](site/site.json), which is all this repository keeps: the
+builder is [`tools/build_pages.py`](https://github.com/symbolfarm/agent-skills/blob/main/tools/build_pages.py)
+in [`agent-skills`](https://github.com/symbolfarm/agent-skills), shared with
+every other site here and carrying no ADUS-specific source or title map.
+Clone that repository beside this one and run, from this directory:
 
 ```sh
-python3 site/build.py
-python3 site/build.py --check
+python3 ../agent-skills/tools/build_pages.py
+python3 ../agent-skills/tools/build_pages.py --check
 ```
 
 The first command regenerates `docs/`. The second builds into a temporary

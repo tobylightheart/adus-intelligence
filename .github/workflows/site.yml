@@ -11,9 +11,19 @@ jobs:
   site:
     runs-on: ubuntu-latest
     steps:
+      # The builder lives in the public agent-skills repository (HMT-C1 R3,
+      # 2026-09-12). Both repositories are checked out under the workspace so
+      # they are siblings, which is how the builder is resolved locally too.
       - uses: actions/checkout@v4
+        with:
+          path: adus-intelligence
+      - uses: actions/checkout@v4
+        with:
+          repository: symbolfarm/agent-skills
+          path: agent-skills
       - uses: actions/setup-python@v5
         with:
           python-version: "3.x"
       - name: Verify reproducible build and links
-        run: python3 site/build.py --check
+        working-directory: adus-intelligence
+        run: python3 ../agent-skills/tools/build_pages.py --check
